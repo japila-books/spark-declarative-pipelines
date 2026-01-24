@@ -81,10 +81,10 @@ resolve(): DataflowGraph
 validate(): DataflowGraph
 ```
 
-`validate`...FIXME
+`validate` raises the exception (available through the [validationFailure](#validationFailure)), if reported, or returns this `DataflowGraph`.
 
 ---
 
 `validate` is used when:
 
-* `PipelineExecution` is requested to [initialize the dataflow graph](PipelineExecution.md#initializeGraph)
+* `PipelineExecution` is requested to [resolve and validate a dataflow graph](PipelineExecution.md#resolveGraph)

@@ -26,13 +26,32 @@ runPipeline(): Unit
 
 * `PipelinesHandler` is requested to [start a pipeline run](PipelinesHandler.md#startRun)
 
+## Dry-Run Pipeline Update { #dryRunPipeline }
+
+```scala
+dryRunPipeline(): Unit
+```
+
+`dryRunPipeline` [resolves and validates this dataflow graph](#resolveGraph).
+
+??? note "UnresolvedPipelineException"
+    [Resolving and validating this dataflow graph](#resolveGraph) may fail with an `UnresolvedPipelineException`.
+
+If successful, `dryRunPipeline` requests this [PipelineUpdateContext](#context) to [emit an `RunCompletion` PipelineEvent](PipelineUpdateContext.md#eventCallback).
+
+---
+
+`dryRunPipeline` is used when:
+
+* `PipelinesHandler` is requested to [start a dry-run pipeline update](PipelinesHandler.md#startRun)
+
 ## Run Pipeline Update { #startPipeline }
 
 ```scala
 startPipeline(): Unit
 ```
 
-`startPipeline` [resolves and validates the dataflow graph](#resolveGraph) (of this pipeline update).
+`startPipeline` [resolves and validates this dataflow graph](#resolveGraph).
 
 For a full-refresh update, `startPipeline` [resets the state of all the flows](State.md#reset) in the [DataflowGraph](DataflowGraph.md).
 
@@ -129,13 +148,16 @@ Pipeline execution has not started yet.
 
 * `SessionHolder` ([Spark Connect]({{ book.spark_connect }}/server/SessionHolder/)) is requested to `removeCachedPipelineExecution`
 
-## Resolve Dataflow Graph { #resolveGraph }
+## Resolve and Validate Dataflow Graph { #resolveGraph }
 
 ```scala
 resolveGraph(): DataflowGraph
 ```
 
 `resolveGraph` requests this [PipelineUpdateContext](#context) for the [unresolved DataflowGraph](PipelineUpdateContext.md#unresolvedGraph) to [resolve](DataflowGraph.md#resolve) and [validate](DataflowGraph.md#validate).
+
+??? note "UnresolvedPipelineException"
+    In case of an `UnresolvedPipelineException`, `resolveGraph` [handleInvalidPipeline](#handleInvalidPipeline) and passes the exception along.
 
 ---
 

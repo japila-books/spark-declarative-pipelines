@@ -1,0 +1,7 @@
+# https://lukasgeiter.github.io/mkdocs-awesome-nav/
+nav:
+  - index.md
+  - Internals:
+    - Overview: overview.md
+    - configuration-properties.md
+    - "*"

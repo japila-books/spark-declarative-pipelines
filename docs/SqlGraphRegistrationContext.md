@@ -81,7 +81,7 @@ A flow name must be a single-part name (that is resolved against the current pip
 The [flowOperation](../logical-operators/CreateFlowCommand.md#flowOperation) of a [CreateFlowCommand](../logical-operators/CreateFlowCommand.md) command must be [InsertIntoStatement](../logical-operators/InsertIntoStatement.md).
 
 ??? warning
-    Only `INSERT INTO ... BY NAME` flows are supported in [Spark Declarative Pipelines](index.md).
+    Only `INSERT INTO ... BY NAME` flows are supported in Spark Declarative Pipelines.
 
     `INSERT OVERWRITE` flows are not supported.
 

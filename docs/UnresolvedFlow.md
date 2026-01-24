@@ -1,6 +1,6 @@
 # UnresolvedFlow
 
-`UnresolvedFlow` is a [Flow](Flow.md) that represents a flow in the Python and SQL transformations in [Spark Declarative Pipelines](index.md):
+`UnresolvedFlow` is a [Flow](Flow.md) that represents a flow in the Python and SQL transformations in Spark Declarative Pipelines:
 
 * [register_flow](GraphElementRegistry.md#register_flow) in PySpark's decorators
 * [CREATE FLOW AS INSERT INTO BY NAME](../logical-operators/CreateFlowCommand.md)

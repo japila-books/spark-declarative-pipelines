@@ -117,168 +117,11 @@ Exception in thread "main" org.apache.spark.SparkUserAppException: User applicat
 
 ## Python
 
-### Python Import Alias Convention
-
-As of this [Commit 6ab0df9]({{ spark.commit }}/6ab0df9287c5a9ce49769612c2bb0a1daab83bee), the convention to alias the import of Declarative Pipelines in Python is `dp` (from `sdp`).
-
-```python
-from pyspark import pipelines as dp
-```
-
-### pyspark.pipelines Python Module { #pyspark_pipelines }
-
-`pyspark.pipelines` module (in `__init__.py`) imports `pyspark.pipelines.api` module to expose the following Python functions (incl. decorators) to wildcard imports:
-
-* [append_flow](#append_flow)
-* [create_sink](#create_sink)
-* [create_streaming_table](#create_streaming_table)
-* [materialized_view](#materialized_view)
-* [table](#table)
-* [temporary_view](#temporary_view)
-
-Use the following import in your Python code:
-
-```py
-from pyspark import pipelines as dp
-```
-
-### Python Decorators
-
-Declarative Pipelines uses [Python decorators](https://peps.python.org/pep-0318/) to define tables and views.
-
-| Decorator | Purpose |
-|-----------|---------|
-| [@dp.append_flow](#append_flow) | [Append-only flows](#append-flows) |
-| [@dp.materialized_view](#materialized_view) | Materialized views (with supporting flows) |
-| [@dp.table](#table) | [Streaming](#streaming-tables) and batch tables (with supporting flows) |
-| [@dp.temporary_view](#temporary_view) | Temporary views (with supporting flows) |
-
-### @dp.append_flow { #append_flow }
-
-```py
-append_flow(
-    *,
-    target: str,
-    name: Optional[str] = None,
-    spark_conf: Optional[Dict[str, str]] = None,
-) -> Callable[[QueryFunction], None] # (1)!
-```
-
-1. `QueryFunction = Callable[[], DataFrame]` is a Python function that takes no arguments and returns a PySpark `DataFrame`.
-
-[Registers](GraphElementRegistry.md#register_flow) an append [Flow](Flow.md) (in the active [GraphElementRegistry](GraphElementRegistry.md))
-
-`target` is the name of the dataset (_destination_) this flow writes to.
-
-### dp.create_sink { #create_sink }
-
-```py
-create_sink(
-    name: str,
-    format: str,
-    options: Optional[Dict[str, str]] = None,
-) -> None
-```
-
-[Registers](GraphElementRegistry.md#register_output) a [Sink](Sink.md) output in the active [GraphElementRegistry](GraphElementRegistry.md).
-
-!!! warning "Not Python Decorator"
-    Unlike the others, `create_sink` is not a [Python decorator](https://peps.python.org/pep-0318/) (`Callable`).
-
-### dp.create_streaming_table { #create_streaming_table }
-
-```py
-create_streaming_table(
-    name: str,
-    *,
-    comment: Optional[str] = None,
-    table_properties: Optional[Dict[str, str]] = None,
-    partition_cols: Optional[List[str]] = None,
-    cluster_by: Optional[List[str]] = None,
-    schema: Optional[Union[StructType, str]] = None,
-    format: Optional[str] = None,
-) -> None
-```
-
-!!! warning "Not Python Decorator"
-    Unlike the others, `create_streaming_table` is not a [Python decorator](https://peps.python.org/pep-0318/) (`Callable`).
-
-[Registers](GraphElementRegistry.md#register_output) a `StreamingTable` dataset (in the active [GraphElementRegistry](GraphElementRegistry.md)) for [Append Flows](#append-flows).
-
-### @dp.materialized_view { #materialized_view }
-
-```py
-materialized_view(
-    query_function: Optional[QueryFunction] = None,
-    *,
-    name: Optional[str] = None,
-    comment: Optional[str] = None,
-    spark_conf: Optional[Dict[str, str]] = None,
-    table_properties: Optional[Dict[str, str]] = None,
-    partition_cols: Optional[List[str]] = None,
-    cluster_by: Optional[List[str]] = None,
-    schema: Optional[Union[StructType, str]] = None,
-    format: Optional[str] = None,
-) -> Union[Callable[[QueryFunction], None], None]
-```
-
-[Registers](GraphElementRegistry.md#register_output) a [MaterializedView](MaterializedView.md) dataset with an accompanying [Flow](GraphElementRegistry.md#register_flow) in the active [GraphElementRegistry](GraphElementRegistry.md).
-
-### @dp.table { #table }
-
-```py
-table(
-    query_function: Optional[QueryFunction] = None,
-    *,
-    name: Optional[str] = None,
-    comment: Optional[str] = None,
-    spark_conf: Optional[Dict[str, str]] = None,
-    table_properties: Optional[Dict[str, str]] = None,
-    partition_cols: Optional[List[str]] = None,
-    cluster_by: Optional[List[str]] = None,
-    schema: Optional[Union[StructType, str]] = None,
-    format: Optional[str] = None,
-) -> Union[Callable[[QueryFunction], None], None]
-```
-
-[Registers](GraphElementRegistry.md#register_output) a `StreamingTable` dataset with an accompanying [Flow](GraphElementRegistry.md#register_flow) in the active [GraphElementRegistry](GraphElementRegistry.md).
-
-### @dp.temporary_view { #temporary_view }
-
-```py
-temporary_view(
-    query_function: Optional[QueryFunction] = None,
-    *,
-    name: Optional[str] = None,
-    comment: Optional[str] = None,
-    spark_conf: Optional[Dict[str, str]] = None,
-) -> Union[Callable[[QueryFunction], None], None]
-```
-
-[Registers](GraphElementRegistry.md#register_output) a `TemporaryView` dataset with an accompanying [Flow](GraphElementRegistry.md#register_flow) in the active [GraphElementRegistry](GraphElementRegistry.md).
+[Python API](./python.md)
 
 ## SQL
 
-Spark Declarative Pipelines supports SQL language to define data processing pipelines.
-
-Pipelines elements are defined in SQL files included as `libraries` in a [pipelines specification file](#pipeline-specification-file).
-
-[SqlGraphRegistrationContext](SqlGraphRegistrationContext.md) is used on Spark Connect Server to handle SQL statements (from SQL definitions files and [Python decorators](#python-decorators)).
-
-Supported SQL statements:
-
-* [CREATE FLOW AS INSERT INTO BY NAME](../sql/SparkSqlAstBuilder.md#visitCreatePipelineInsertIntoFlow)
-* [CREATE MATERIALIZED VIEW AS](../sql/SparkSqlAstBuilder.md#visitCreatePipelineDataset)
-* [CREATE STREAMING TABLE](../sql/SparkSqlAstBuilder.md#visitCreatePipelineDataset)
-* [CREATE STREAMING TABLE AS](../sql/SparkSqlAstBuilder.md#visitCreatePipelineDataset)
-* [CREATE (PERSISTED) VIEW](../sql/SparkSqlAstBuilder.md#visitCreateView)
-* [CREATE TEMPORARY VIEW](../sql/SparkSqlAstBuilder.md#visitCreateView)
-* [SET](../logical-operators/SetCommand.md)
-* [SET CATALOG](../logical-operators/SetCatalogCommand.md)
-* [USE NAMESPACE](../logical-operators/SetNamespaceCommand.md)
-
-A streaming table can be defined without a query, as streaming tables' data can be backed by standalone flows.
-During a pipeline execution, it is validated that a streaming table has at least one standalone flow writing to the table, if no query is specified in the create statement itself.
+[SQL](./sql.md)
 
 ## Demo: Create Virtual Environment for Python Client
 
@@ -345,7 +188,7 @@ Activate (_source_) the virtual environment (that `uv` helped us create).
 source .venv/bin/activate
 ```
 
-This activation brings all the necessary Spark Declarative Pipelines' Python dependencies (that are only available in the source format only) for non-`uv` tools and CLI, incl. [Spark Pipelines CLI](#spark-pipelines) itself.
+This activation brings all the necessary Spark Declarative Pipelines Python dependencies (that are only available in the source format only) for non-`uv` tools and CLI, incl. [Spark Pipelines CLI](#spark-pipelines) itself.
 
 ```shell
 $SPARK_HOME/bin/spark-pipelines --help

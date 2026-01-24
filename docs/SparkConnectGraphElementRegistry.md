@@ -2,7 +2,7 @@
 
 `SparkConnectGraphElementRegistry` is a [GraphElementRegistry](GraphElementRegistry.md).
 
-`SparkConnectGraphElementRegistry` acts as a communication bridge between Spark Declarative Pipelines' Python execution environment and Spark Connect Server (with [PipelinesHandler](PipelinesHandler.md)).
+`SparkConnectGraphElementRegistry` acts as a communication bridge between Spark Declarative Pipelines Python execution environment and Spark Connect Server (with [PipelinesHandler](PipelinesHandler.md)).
 
 ## Creating Instance
 

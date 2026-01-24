@@ -4,4 +4,10 @@ nav:
   - Internals:
     - Overview: overview.md
     - configuration-properties.md
+    - Logical Operators: logical-operators
     - "*"
+  - Python:
+    - python.md
+    - spark_connect_pipeline.md
+  - SQL:
+    - sql.md

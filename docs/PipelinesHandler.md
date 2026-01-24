@@ -6,7 +6,7 @@ subtitle: Spark Connect Endpoint
 
 `PipelinesHandler` is used to [handle pipeline commands](#handlePipelinesCommand) in [Spark Connect]({{ book.spark_connect }}) ([SparkConnectPlanner]({{ book.spark_connect }}/server/SparkConnectPlanner), precisely).
 
-`PipelinesHandler` acts as a bridge between Python execution environment of [Spark Declarative Pipelines](index.md) and [Spark Connect Server]({{ book.spark_connect }}/server/) (where pipeline execution happens).
+`PipelinesHandler` acts as a bridge between Python execution environment of Spark Declarative Pipelines and [Spark Connect Server]({{ book.spark_connect }}/server/) (where pipeline execution happens).
 
 ![PipelinesHandler](./images/PipelinesHandler.png)
 

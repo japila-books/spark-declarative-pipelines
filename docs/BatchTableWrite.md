@@ -4,7 +4,9 @@ title: BatchTableWrite
 
 # BatchTableWrite Flow Execution
 
-`BatchTableWrite` is a [FlowExecution](FlowExecution.md) that writes a batch `DataFrame` to a [Table](#destination).
+`BatchTableWrite` is a [FlowExecution](FlowExecution.md) that represents a [CompleteFlow](CompleteFlow.md) at execution.
+
+When [executed](#executeInternal), `BatchTableWrite` writes a batch `DataFrame` ([Spark SQL]({{ book.spark_sql }}/DataFrame)) to a [Table](#destination) destination.
 
 ## Creating Instance
 
@@ -39,9 +41,9 @@ title: BatchTableWrite
 
 `executeInternal` executes `append` batch write asynchronously:
 
-1. Creates a [DataFrameWriter](../DataFrameWriter.md) for the batch query's logical plan (the [DataFrame](ResolvedFlow.md#df)).
+1. Creates a `DataFrameWriter` ([Spark SQL]({{ book.spark_sql }}/DataFrameWriter/)) for the batch query's logical plan (the [DataFrame](ResolvedFlow.md#df)).
 1. Sets the write format to the [format](Table.md#format) of this [Table](#destination).
-1. In the end, `executeInternal` appends the rows to this [Table](#destination) (using [DataFrameWriter.saveAsTable](../DataFrameWriter.md#saveAsTable) operator).
+1. In the end, `executeInternal` appends the rows to this [Table](#destination) (using `DataFrameWriter.saveAsTable` ([Spark SQL]({{ book.spark_sql }}/DataFrameWriter/#saveAsTable)) operator).
 
 ## isStreaming { #isStreaming }
 

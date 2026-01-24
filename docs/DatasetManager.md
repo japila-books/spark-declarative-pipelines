@@ -4,8 +4,8 @@
 
 ![DatasetManager](./images/DatasetManager.png)
 
-!!! note ""
-    **Materialization** is a process of publishing tables and persistent views to session [TableCatalog](../connector/catalog/TableCatalog.md) and [SessionCatalog](../SessionCatalog.md), for tables and persistent views, respectively.
+??? note "Materialization"
+    **Materialization** is a process of publishing tables and persistent views to session `TableCatalog` ([Spark SQL]({{ book.spark_sql }}/connector/catalog/TableCatalog)) and `SessionCatalog` ([Spark SQL]({{ book.spark_sql }}/SessionCatalog)), for tables and persistent views, respectively.
 
 ??? note "Scala object"
     `DatasetManager` is an `object` in Scala which means it is a class that has exactly one instance (itself).
@@ -53,19 +53,19 @@ materializeTable(
 Materializing metadata for table [identifier].
 ```
 
-`materializeTable` uses the given [PipelineUpdateContext](PipelineUpdateContext.md) to find the [CatalogManager](../connector/catalog/CatalogManager.md) (in the [SparkSession](PipelineUpdateContext.md#spark)).
+`materializeTable` uses the given [PipelineUpdateContext](PipelineUpdateContext.md) to find the `CatalogManager` ([Spark SQL]({{ book.spark_sql }}/connector/catalog/CatalogManager)) (in the [SparkSession](PipelineUpdateContext.md#spark)).
 
-`materializeTable` finds the [TableCatalog](../connector/catalog/TableCatalog.md) for the table.
+`materializeTable` finds the `TableCatalog` ([Spark SQL]({{ book.spark_sql }}/connector/catalog/TableCatalog)) for the table.
 
-`materializeTable` requests the `TableCatalog` to [load the table](../connector/catalog/TableCatalog.md#loadTable) if [exists](../connector/catalog/TableCatalog.md#tableExists) already.
+`materializeTable` requests the `TableCatalog` ([Spark SQL]({{ book.spark_sql }}/connector/catalog/TableCatalog/#loadTable)) to load the table if exists ([Spark SQL]({{ book.spark_sql }}/connector/catalog/TableCatalog/#tableExists)) already.
 
-For an existing table, `materializeTable` wipes data out (`TRUNCATE TABLE`) if it is`isFullRefresh` or the table is not [streaming](Table.md#isStreamingTable).
+For an existing table, `materializeTable` wipes data out (`TRUNCATE TABLE`) if it is `isFullRefresh` or the table is not [streaming](Table.md#isStreamingTable).
 
-For an existing table, `materializeTable` requests the `TableCatalog` to [alter the table](../connector/catalog/TableCatalog.md#alterTable) if there are any changes in the schema or table properties.
+For an existing table, `materializeTable` requests the `TableCatalog` ([Spark SQL]({{ book.spark_sql }}/connector/catalog/TableCatalog/#alterTable)) to alter the table if there are any changes in the schema or table properties.
 
-Unless created already, `materializeTable` requests the `TableCatalog` to [create the table](../connector/catalog/TableCatalog.md#createTable).
+Unless created already, `materializeTable` requests the `TableCatalog` ([Spark SQL]({{ book.spark_sql }}/connector/catalog/TableCatalog/#createTable)) to create the table.
 
-In the end, `materializeTable` requests the `TableCatalog` to [load the materialized table](../connector/catalog/TableCatalog.md#loadTable) and returns the given [Table](Table.md) back (with the [normalized table storage path](Table.md#normalizedPath) updated to the `location` property of the materialized table).
+In the end, `materializeTable` requests the `TableCatalog` ([Spark SQL]({{ book.spark_sql }}/connector/catalog/TableCatalog/#loadTable)) to load the materialized table and returns the given [Table](Table.md) back (with the [normalized table storage path](Table.md#normalizedPath) updated to the `location` property of the materialized table).
 
 ### Materialize Views { #materializeViews }
 
@@ -94,15 +94,15 @@ materializeView(
   spark: SparkSession): Unit
 ```
 
-`materializeView` [executes a CreateViewCommand logical command](../logical-operators/CreateViewCommand.md).
+`materializeView` executes a `CreateViewCommand` ([Spark SQL]({{ book.spark_sql }}/logical-operators/CreateViewCommand/)) logical command.
 
 ---
 
-`materializeView` creates a [CreateViewCommand](../logical-operators/CreateViewCommand.md) logical command (as a `PersistedView` with `allowExisting` and `replace` flags enabled).
+`materializeView` creates a `CreateViewCommand` ([Spark SQL]({{ book.spark_sql }}/logical-operators/CreateViewCommand/)) logical command (as a `PersistedView` with `allowExisting` and `replace` flags enabled).
 
-`materializeView` requests the given [ResolvedFlow](ResolvedFlow.md) for the [QueryContext](ResolutionCompletedFlow.md#queryContext) to set the current catalog and current database, if defined, in the session [CatalogManager](../connector/catalog/CatalogManager.md).
+`materializeView` requests the given [ResolvedFlow](ResolvedFlow.md) for the [QueryContext](ResolutionCompletedFlow.md#queryContext) to set the current catalog and current database, if defined, in the session `CatalogManager` ([Spark SQL]({{ book.spark_sql }}/connector/catalog/CatalogManager)).
 
-In the end, `materializeView` [executes the CreateViewCommand](../logical-operators/CreateViewCommand.md#run).
+In the end, `materializeView` executes the `CreateViewCommand` ([Spark SQL]({{ book.spark_sql }}/logical-operators/CreateViewCommand/#run)).
 
 ## constructFullRefreshSet { #constructFullRefreshSet }
 

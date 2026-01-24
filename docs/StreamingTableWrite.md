@@ -4,9 +4,19 @@ title: StreamingTableWrite
 
 # StreamingTableWrite Flow Execution
 
-`StreamingTableWrite` is a [StreamingFlowExecution](StreamingFlowExecution.md) that writes a streaming `DataFrame` to a [Table](#destination)..
+`StreamingTableWrite` is a [StreamingFlowExecution](StreamingFlowExecution.md) that represents a [StreamingFlow](StreamingFlow.md) at execution.
 
-When [executed](#startStream), `StreamingTableWrite` starts a streaming query to append new rows to an [output table](#destination).
+When [executed](#startStream), `StreamingTableWrite` starts a streaming query (a streaming `DataFrame` ([Spark SQL]({{ book.spark_sql }}/DataFrame))) to **append** new rows to a [Table](#destination) destination.
+
+`StreamingTableWrite` uses `DataStreamWriter` ([Spark Structured Streaming]({{ book.structured_streaming }}/DataStreamWriter/)) for writing streaming data with the following properties:
+
+`DataStreamWriter`'s Property | Value
+-|-
+ `queryName` | This [displayName](FlowExecution.md#displayName)
+ `format` | The [format](Table.md#format) of this [output table](#destination) (if defined)
+ `checkpointLocation` option | This [checkpoint path](StreamingFlowExecution.md#checkpointPath)
+ `outputMode` | Always `Append` ([Spark Structured Streaming]({{ book.structured_streaming }}/OutputMode/#append))
+ `trigger` | Always `AvailableNowTrigger` ([Spark Structured Streaming]({{ book.structured_streaming }}/Trigger/#AvailableNowTrigger))<br>(indirectly through this [streaming trigger](GraphExecution.md#streamTrigger))
 
 ## Creating Instance
 
@@ -44,7 +54,7 @@ When [executed](#startStream), `StreamingTableWrite` starts a streaming query to
  `queryName` | This [displayName](FlowExecution.md#displayName)
  `checkpointLocation` option | This [checkpoint path](#checkpointPath)
  `trigger` | This [streaming trigger](#trigger)
- `outputMode` | [Append]({{ book.structured_streaming }}/OutputMode/#append) (always)
- `format` | The [format](Table.md#format) of this [output table](#destination) (only when defined)
+ `outputMode` | Always `Append` ([Spark Structured Streaming]({{ book.structured_streaming }}/OutputMode/#append))
+ `format` | The [format](Table.md#format) of this [output table](#destination) (if defined)
 
 In the end, `startStream` starts the streaming write query to this [output table](#destination).

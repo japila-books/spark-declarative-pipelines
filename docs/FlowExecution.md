@@ -91,3 +91,25 @@ executeAsync(): Unit
 `executeAsync` is used when:
 
 * `GraphExecution` is requested to [planAndStartFlow](GraphExecution.md#planAndStartFlow)
+
+## Human-Friendly Display Name { #displayName }
+
+```scala
+displayName: String
+```
+
+`displayName` is the `unquotedString` of this [TableIdentifier](#identifier).
+
+??? note "Final Method"
+    `displayName` is a Scala **final method** and may not be overridden in [subclasses](#implementations).
+
+    Learn more in the [Scala Language Specification]({{ scala.spec }}/05-classes-and-objects.html#final).
+
+---
+
+`displayName` is used when:
+
+* `SinkWrite` is requested to [startStream](SinkWrite.md#startStream) (used for a query name)
+* `StreamingTableWrite` is requested to [startStream](StreamingTableWrite.md#startStream) (used for a query name)
+* `GraphExecution` is requested to [stop an execution of a flow](GraphExecution.md#stopFlow) (used for error reporting)
+* `FlowProgressEventLogger` is requested to [record a start of an execution of a flow](FlowProgressEventLogger.md#recordStart) (used for error reporting)

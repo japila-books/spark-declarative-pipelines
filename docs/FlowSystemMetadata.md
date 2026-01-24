@@ -15,13 +15,13 @@
 * `FlowPlanner` is requested to [plan a StreamingFlow for execution](FlowPlanner.md#plan)
 * `State` is requested to [clear out the state of a flow](State.md#reset)
 
-## latestCheckpointLocation { #latestCheckpointLocation }
+## Latest Checkpoint Location { #latestCheckpointLocation }
 
 ```scala
 latestCheckpointLocation: String
 ```
 
-`latestCheckpointLocation`...FIXME
+`latestCheckpointLocation` determines the path of the [latest checkpoint directory](SystemMetadata.md#getLatestCheckpointDir) under the [checkpoints root directory](#flowCheckpointsDirOpt).
 
 ---
 

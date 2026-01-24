@@ -1,6 +1,26 @@
 # Table
 
-`Table` is a [TableInput](TableInput.md) and an [Output](Output.md).
+`Table` is a [TableInput](TableInput.md) and a [Dataset](Dataset.md) output.
+
+## Creating Instance
+
+`Table` takes the following to be created:
+
+* <span id="identifier"> `TableIdentifier`
+* <span id="specifiedSchema"> `specifiedSchema` (optional)
+* <span id="partitionCols"> `partitionCols` (optional)
+* <span id="clusterCols"> `clusterCols` (optional)
+* <span id="normalizedPath"> `normalizedPath` (optional)
+* <span id="properties"> Properties
+* <span id="comment"> Comment (optional)
+* <span id="origin"> `QueryOrigin`
+* <span id="isStreamingTable"> `isStreamingTable` flag
+* <span id="format"> Format (optional)
+
+`Table` is created when:
+
+* `PipelinesHandler` is requested to [define an Output](PipelinesHandler.md#defineOutput)
+* `SqlGraphRegistrationContext` is requested to handle [CreateMaterializedViewAsSelect](SqlGraphRegistrationContext.md#CreateMaterializedViewAsSelect), [CreateStreamingTableAsSelect](SqlGraphRegistrationContext.md#CreateStreamingTableAsSelect), [CreateStreamingTable](SqlGraphRegistrationContext.md#CreateStreamingTable) logical commands
 
 ## Load Data { #load }
 

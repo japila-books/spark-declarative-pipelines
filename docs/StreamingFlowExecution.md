@@ -10,9 +10,27 @@
 checkpointPath: String
 ```
 
+Path for the [most recent checkpoint of this streaming flow execution](FlowSystemMetadata.md#latestCheckpointLocation)
+
+See:
+
+* [SinkWrite](SinkWrite.md#checkpointPath)
+* [StreamingTableWrite](StreamingTableWrite.md#checkpointPath)
+
 Used when:
 
 * `StreamingTableWrite` is requested to [start a streaming query](StreamingTableWrite.md#startStream)
+
+### Resolved Flow { #flow }
+
+```scala
+flow: ResolvedFlow
+```
+
+See:
+
+* [SinkWrite](SinkWrite.md#flow)
+* [StreamingTableWrite](StreamingTableWrite.md#flow)
 
 ### Start Streaming Query { #startStream }
 
@@ -29,13 +47,45 @@ Used when:
 
 * `StreamingFlowExecution` is requested to [executeInternal](#executeInternal)
 
+### Start Streaming Query { #startStream }
+
+```scala
+startStream(): StreamingQuery
+```
+
+See:
+
+* [SinkWrite](SinkWrite.md#startStream)
+* [StreamingTableWrite](StreamingTableWrite.md#startStream)
+
+Used when:
+
+* `StreamingFlowExecution` is requested to [executeInternal](#executeInternal)
+
+### sqlConf { #sqlConf }
+
+```scala
+sqlConf: Map[String, String]
+```
+
+Spark configuration properties that must be set upon starting this flow
+
+See:
+
+* [SinkWrite](SinkWrite.md#sqlConf)
+* [StreamingTableWrite](StreamingTableWrite.md#sqlConf)
+
+Used when:
+
+* `StreamingFlowExecution` is requested to [executeInternal](#executeInternal)
+
 ### Streaming Trigger { #trigger }
 
 ```scala
 trigger: Trigger
 ```
 
-`Trigger` ([Structured Streaming]({{ book.structured_streaming }}/Trigger))
+`Trigger` ([Spark Structured Streaming]({{ book.structured_streaming }}/Trigger))
 
 See:
 
@@ -44,8 +94,8 @@ See:
 
 Used when:
 
-* `FlowPlanner` is requested to [plan a StreamingFlow](FlowPlanner.md#plan)
-* `StreamingTableWrite` is requested to [execute the streaming query](StreamingTableWrite.md#startStream)
+* `SinkWrite` is requested to [startStream](SinkWrite.md#startStream)
+* `StreamingTableWrite` is requested to [startStream](StreamingTableWrite.md#startStream)
 
 ## Implementations
 

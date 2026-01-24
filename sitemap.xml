@@ -165,6 +165,10 @@
          <lastmod>2026-01-24</lastmod>
     </url>
     <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/SQLConf/</loc>
+         <lastmod>2026-01-24</lastmod>
+    </url>
+    <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/SchemaInferenceUtils/</loc>
          <lastmod>2026-01-24</lastmod>
     </url>
@@ -257,7 +261,43 @@
          <lastmod>2026-01-24</lastmod>
     </url>
     <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/python/</loc>
+         <lastmod>2026-01-24</lastmod>
+    </url>
+    <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark_connect_pipeline/</loc>
+         <lastmod>2026-01-24</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/sql/</loc>
+         <lastmod>2026-01-24</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/</loc>
+         <lastmod>2026-01-24</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreateFlowCommand/</loc>
+         <lastmod>2026-01-24</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreateMaterializedViewAsSelect/</loc>
+         <lastmod>2026-01-24</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreatePipelineDataset/</loc>
+         <lastmod>2026-01-24</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreatePipelineDatasetAsSelect/</loc>
+         <lastmod>2026-01-24</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreateStreamingTable/</loc>
+         <lastmod>2026-01-24</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreateStreamingTableAsSelect/</loc>
          <lastmod>2026-01-24</lastmod>
     </url>
 </urlset>

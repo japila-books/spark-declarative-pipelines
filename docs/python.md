@@ -1,8 +1,12 @@
-# Python
+---
+title: Python
+---
 
-## Python Import Alias Convention
+# SDP Python API
 
-As of this [commit 6ab0df9]({{ spark.commit }}/6ab0df9287c5a9ce49769612c2bb0a1daab83bee), the convention to alias the import of Declarative Pipelines in Python is `dp`.
+**SDP Python API** is available through [pyspark.pipelines](#pyspark_pipelines) Python module.
+
+The convention to alias the import of Spark Declarative Pipelines' Python module is `dp`.
 
 ```python
 from pyspark import pipelines as dp
@@ -19,21 +23,15 @@ from pyspark import pipelines as dp
 * [table](#table)
 * [temporary_view](#temporary_view)
 
-Use the following import in your Python code:
-
-```py
-from pyspark import pipelines as dp
-```
-
 ## Python Decorators
 
 Declarative Pipelines uses [Python decorators](https://peps.python.org/pep-0318/) to define tables and views.
 
 | Decorator | Purpose |
 |-----------|---------|
-| [@dp.append_flow](#append_flow) | [Append-only flows](#append-flows) |
-| [@dp.materialized_view](#materialized_view) | Materialized views (with supporting flows) |
-| [@dp.table](#table) | [Streaming](#streaming-tables) and batch tables (with supporting flows) |
+| [@dp.append_flow](#append_flow) | [Append-only flows](./overview.md#append-flows) |
+| [@dp.materialized_view](#materialized_view) | [Materialized views](./overview.md#materialized-views) (with supporting flows) |
+| [@dp.table](#table) | [Streaming](./overview.md#streaming-tables) and batch tables (with supporting flows) |
 | [@dp.temporary_view](#temporary_view) | Temporary views (with supporting flows) |
 
 ## @dp.append_flow { #append_flow }

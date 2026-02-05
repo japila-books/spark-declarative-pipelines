@@ -1,12 +1,12 @@
 # Spark Declarative Pipelines
 
-**Spark Declarative Pipelines (SDP)** is a declarative framework for building data processing (ETL) pipelines on Apache Spark in [Python](#python) and [SQL](#sql) languages.
+**Spark Declarative Pipelines (SDP)** is a declarative framework for building data processing (ETL) pipelines on Apache Spark in [Python](python.md) and [SQL](sql.md) languages.
 
 A Declarative Pipelines project is defined and configured in a [pipeline specification file](#pipeline-specification-file).
 
 A Declarative Pipelines project can be executed with [spark-pipelines](#spark-pipelines) shell script.
 
-Declarative Pipelines uses [Python decorators](#python-decorators) to describe tables, views and flows, declaratively.
+Declarative Pipelines uses [Python decorators](python.md#python-decorators) to describe tables, views and flows, declaratively.
 
 The definitions of tables, views and flows are registered in [DataflowGraphRegistry](DataflowGraphRegistry.md) (with [GraphRegistrationContext](GraphRegistrationContext.md)s by graph IDs). A `GraphRegistrationContext` is [converted into a DataflowGraph](GraphRegistrationContext.md#toDataflowGraph) when `PipelinesHandler` is requested to [start a pipeline run](PipelinesHandler.md#startRun) (when [spark-pipelines](#spark-pipelines) script is launched with `run` or `dry-run` command).
 
@@ -29,7 +29,7 @@ Unless specified using spark-pipelines CLI's [--spec](SparkPipelines.md#run) opt
 * `spark-pipeline.yml`
 * `spark-pipeline.yaml`
 
-In the pipeline specification file, Declarative Pipelines developers specify files (`libraries`) with tables, views and flows (transformations) definitions in [Python](#python) and [SQL](#sql). A SDP project can use both languages simultaneously.
+In the pipeline specification file, Declarative Pipelines developers specify files (`libraries`) with tables, views and flows (transformations) definitions in [Python](python.md) and [SQL](sql.md). A SDP project can use both languages simultaneously.
 
 The following fields are supported:
 
@@ -76,17 +76,17 @@ Declarative Pipelines supports the following dataset types:
 
 **Append Flows** can be created with the following:
 
-* [@dp.append_flow](#append_flow)
-* [CREATE FLOW AS INSERT INTO BY NAME](../sql/SparkSqlAstBuilder.md#visitCreatePipelineInsertIntoFlow)
+* [@dp.append_flow](python.md#append_flow)
+* `CREATE FLOW AS INSERT INTO BY NAME` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder/#visitCreatePipelineInsertIntoFlow))
 
 ### Materialized Views
 
 **Materialized Views** can be created with the following:
 
-* [@dp.materialized_view](#materialized_view)
-* [CREATE MATERIALIZED VIEW AS](../sql/SparkSqlAstBuilder.md#visitCreatePipelineDataset)
+* [@dp.materialized_view](python.md#materialized_view)
+* `CREATE MATERIALIZED VIEW AS` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder/#visitCreatePipelineDataset))
 
-**Materialized Views** are published to a catalog.
+Materialized views are published to a catalog.
 
 ### Streaming Tables
 
@@ -94,8 +94,10 @@ Declarative Pipelines supports the following dataset types:
 
 Streaming tables can be created with the following:
 
-* [@dp.create_streaming_table](#create_streaming_table) or [CREATE STREAMING TABLE](../sql/SparkSqlAstBuilder.md/#visitCreatePipelineDataset) (with no flows that can be defined later with [@dp.append_flow](#append_flow) or [CREATE FLOW AS INSERT INTO BY NAME](../sql/SparkSqlAstBuilder.md/#visitCreatePipelineInsertIntoFlow))
-* [CREATE STREAMING TABLE AS](../sql/SparkSqlAstBuilder.md/#visitCreatePipelineDataset)
+* [@dp.create_streaming_table](python.md#create_streaming_table) or `CREATE STREAMING TABLE` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder//#visitCreatePipelineDataset)) (with no flows that can be defined later with [@dp.append_flow](python.md#append_flow) or `CREATE FLOW AS INSERT INTO BY NAME` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder//#visitCreatePipelineInsertIntoFlow)))
+* `CREATE STREAMING TABLE AS` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder/#visitCreatePipelineDataset))
+
+Streaming tables are published to a catalog.
 
 ## Spark Connect Only { #spark-connect }
 
@@ -113,395 +115,6 @@ Exception in thread "main" org.apache.spark.SparkUserAppException: User applicat
  at org.apache.spark.deploy.SparkPipelines$.constructSparkSubmitArgs(SparkPipelines.scala:43)
  at org.apache.spark.deploy.SparkPipelines$.main(SparkPipelines.scala:37)
  at org.apache.spark.deploy.SparkPipelines.main(SparkPipelines.scala)
-```
-
-## Python
-
-[Python API](./python.md)
-
-## SQL
-
-[SQL](./sql.md)
-
-## Demo: Create Virtual Environment for Python Client
-
-```shell
-uv init hello-spark-pipelines && cd hello-spark-pipelines
-```
-
-```shell
-export SPARK_HOME=/Users/jacek/oss/spark
-```
-
-```shell
-uv add --editable $SPARK_HOME/python/packaging/client
-```
-
-```shell
-uv tree --depth 2
-```
-
-=== "Output"
-
-    ```text
-    hello-spark-pipelines v0.1.0
-    └── pyspark-client v4.2.0.dev0
-        ├── googleapis-common-protos v1.72.0
-        ├── grpcio v1.76.0
-        ├── grpcio-status v1.76.0
-        ├── numpy v2.3.4
-        ├── pandas v2.3.3
-        ├── pyarrow v22.0.0
-        ├── pyyaml v6.0.3
-        └── zstandard v0.25.0
-    ```
-
-```shell
-uv pip list
-```
-
-=== "Output"
-
-    ```text
-    Package                  Version     Editable project location
-    ------------------------ ----------- ----------------------------------------------
-    googleapis-common-protos 1.72.0
-    grpcio                   1.76.0
-    grpcio-status            1.76.0
-    numpy                    2.3.4
-    pandas                   2.3.3
-    protobuf                 6.33.1
-    pyarrow                  22.0.0
-    pyspark-client           4.2.0.dev0  /Users/jacek/oss/spark/python/packaging/client
-    python-dateutil          2.9.0.post0
-    pytz                     2025.2
-    pyyaml                   6.0.3
-    six                      1.17.0
-    typing-extensions        4.15.0
-    tzdata                   2025.2
-    zstandard                0.25.0
-    ```
-
-Activate (_source_) the virtual environment (that `uv` helped us create).
-
-```shell
-source .venv/bin/activate
-```
-
-This activation brings all the necessary Spark Declarative Pipelines Python dependencies (that are only available in the source format only) for non-`uv` tools and CLI, incl. [Spark Pipelines CLI](#spark-pipelines) itself.
-
-```shell
-$SPARK_HOME/bin/spark-pipelines --help
-```
-
-!!! note ""
-
-    ```text
-    usage: cli.py [-h] {run,dry-run,init} ...
-
-    Pipelines CLI
-
-    positional arguments:
-      {run,dry-run,init}
-        run               Run a pipeline. If no refresh options specified, a
-                          default incremental update is performed.
-        dry-run           Launch a run that just validates the graph and checks
-                          for errors.
-        init              Generate a sample pipeline project, with a spec file and
-                          example transformations.
-
-    options:
-      -h, --help          show this help message and exit
-    ```
-
-!!! note "macOS and PYSPARK_PYTHON"
-    On macOS, you may want to define `PYSPARK_PYTHON` environment variable to point at Python >= 3.10.
-
-    ```shell
-    export PYSPARK_PYTHON=python3.14
-    ```
-
-## Demo: Python API
-
-??? warning "Activate Virtual Environment"
-    Follow [Demo: Create Virtual Environment for Python Client](#demo-create-virtual-environment-for-python-client) before getting started with this demo.
-
-In a terminal, start a Spark Connect Server.
-
-```shell
-./sbin/start-connect-server.sh
-```
-
-It will listen on port 15002.
-
-??? note "Monitor Logs"
-    
-    ```shell
-    tail -f logs/*org.apache.spark.sql.connect.service.SparkConnectServer*.out
-    ```
-
-Start a Spark Connect-enabled PySpark shell.
-
-```shell
-$SPARK_HOME/bin/pyspark --remote sc://localhost:15002
-```
-
-```py
-from pyspark.pipelines.spark_connect_pipeline import create_dataflow_graph
-dataflow_graph_id = create_dataflow_graph(
-  spark,
-  default_catalog=None,
-  default_database=None,
-  sql_conf=None,
-)
-
-# >>> print(dataflow_graph_id)
-# 3cb66d5a-0621-4f15-9920-e99020e30e48
-```
-
-```py
-from pyspark.pipelines.spark_connect_graph_element_registry import SparkConnectGraphElementRegistry
-registry = SparkConnectGraphElementRegistry(spark, dataflow_graph_id)
-```
-
-```py
-from pyspark import pipelines as dp
-```
-
-```py
-from pyspark.pipelines.graph_element_registry import graph_element_registration_context
-with graph_element_registration_context(registry):
-  dp.create_streaming_table("demo_streaming_table")
-```
-
-You should see the following INFO message in the logs of the Spark Connect Server:
-
-```text
-INFO PipelinesHandler: Define pipelines dataset cmd received: define_dataset {
-  dataflow_graph_id: "3cb66d5a-0621-4f15-9920-e99020e30e48"
-  dataset_name: "demo_streaming_table"
-  dataset_type: TABLE
-}
-```
-
-## Demo: spark-pipelines CLI
-
-!!! warning "Activate Virtual Environment"
-    Follow [Demo: Create Virtual Environment for Python Client](#demo-create-virtual-environment-for-python-client) before getting started with this demo.
-
-### 1️⃣ Display Pipelines Help
-
-Run `spark-pipelines --help` to learn the options.
-
-```shell
-$SPARK_HOME/bin/spark-pipelines --help
-```
-
-=== "Output"
-
-    ```text
-    usage: cli.py [-h] {run,dry-run,init} ...
-
-    Pipelines CLI
-
-    positional arguments:
-      {run,dry-run,init}
-        run               Run a pipeline. If no refresh options specified, a
-                          default incremental update is performed.
-        dry-run           Launch a run that just validates the graph and checks
-                          for errors.
-        init              Generate a sample pipeline project, including a spec
-                          file and example transformations.
-
-    options:
-      -h, --help          show this help message and exit
-    ```
-
-### 2️⃣ Create Pipelines Demo Project
-
-You've only created an empty Python project so far (using `uv`).
-
-Create a demo double `hello-spark-pipelines` pipelines project with a sample `spark-pipeline.yml` and sample transformations (in Python and in SQL).
-
-```shell
-$SPARK_HOME/bin/spark-pipelines init --name hello-spark-pipelines && \
-mv hello-spark-pipelines/* . && \
-rm -rf hello-spark-pipelines
-```
-
-```shell
-cat spark-pipeline.yml
-```
-
-=== "Output"
-
-    ```yaml
-
-    name: hello-spark-pipelines
-    storage: file:///Users/jacek/sandbox/hello-spark-pipelines/hello-spark-pipelines/pipeline-storage
-    libraries:
-      - glob:
-          include: transformations/**
-    ```
-
-```shell
-tree transformations
-```
-
-=== "Output"
-
-    ```text
-    transformations
-    ├── example_python_materialized_view.py
-    └── example_sql_materialized_view.sql
-
-    1 directory, 2 files
-    ```
-
-!!! warning "Spark Connect Server should be down"
-    `spark-pipelines dry-run` starts its own Spark Connect Server at 15002 port (unless started with `--remote` option).
-
-    Shut down Spark Connect Server if you started it already.
-
-    ```shell
-    $SPARK_HOME/sbin/stop-connect-server.sh
-    ```
-
-!!! info "`--remote` option"
-    Use `--remote` option to connect to a standalone Spark Connect Server.
-
-    ```shell
-    $SPARK_HOME/bin/spark-pipelines --remote sc://localhost dry-run
-    ```
-
-### 3️⃣ Dry Run Pipelines Project
-
-```shell
-$SPARK_HOME/bin/spark-pipelines dry-run
-```
-
-=== "Output"
-
-    ```text
-    Loading pipeline spec from /Users/jacek/sandbox/hello-spark-pipelines/spark-pipeline.yml...
-    Creating Spark session...
-    Creating dataflow graph...
-    Registering graph elements...
-    Loading definitions. Root directory: '/Users/jacek/sandbox/hello-spark-pipelines'.
-    Found 2 files matching glob 'transformations/**/*'
-    Importing /Users/jacek/sandbox/hello-spark-pipelines/transformations/example_python_materialized_view.py...
-    Registering SQL file /Users/jacek/sandbox/hello-spark-pipelines/transformations/example_sql_materialized_view.sql...
-    Starting run...
-    Run is COMPLETED.
-    ```
-
-### 4️⃣ Run Pipelines Project
-
-Run the pipeline.
-
-```shell
-$SPARK_HOME/bin/spark-pipelines run
-```
-
-=== "Output"
-
-    ```text
-    Loading pipeline spec from /Users/jacek/sandbox/hello-spark-pipelines/spark-pipeline.yml...
-    Creating Spark session...
-    Creating dataflow graph...
-    Registering graph elements...
-    Loading definitions. Root directory: '/Users/jacek/sandbox/hello-spark-pipelines'.
-    Found 2 files matching glob 'transformations/**/*'
-    Importing /Users/jacek/sandbox/hello-spark-pipelines/transformations/example_python_materialized_view.py...
-    Registering SQL file /Users/jacek/sandbox/hello-spark-pipelines/transformations/example_sql_materialized_view.sql...
-    Starting run...
-    Flow spark_catalog.default.example_python_materialized_view is QUEUED.
-    Flow spark_catalog.default.example_sql_materialized_view is QUEUED.
-    Flow spark_catalog.default.example_python_materialized_view is PLANNING.
-    Flow spark_catalog.default.example_python_materialized_view is STARTING.
-    Flow spark_catalog.default.example_python_materialized_view is RUNNING.
-    Flow spark_catalog.default.example_python_materialized_view has COMPLETED.
-    Flow spark_catalog.default.example_sql_materialized_view is PLANNING.
-    Flow spark_catalog.default.example_sql_materialized_view is STARTING.
-    Flow spark_catalog.default.example_sql_materialized_view is RUNNING.
-    Flow spark_catalog.default.example_sql_materialized_view has COMPLETED.
-    Run is COMPLETED.
-    ```
-
-```shell
-tree spark-warehouse
-```
-
-=== "Output"
-
-    ```text
-    spark-warehouse
-    ├── example_python_materialized_view
-    │   ├── _SUCCESS
-    │   └── part-00000-284bc03a-3405-4e8e-bbd7-f6f17d79c282-c000.snappy.parquet
-    └── example_sql_materialized_view
-        ├── _SUCCESS
-        └── part-00000-8316b6c6-7532-4f7a-92f6-2ec024e069f4-c000.snappy.parquet
-
-    3 directories, 4 files
-    ```
-
-## Demo: Scala API
-
-### Step 1. Register Dataflow Graph
-
-[DataflowGraphRegistry](DataflowGraphRegistry.md#createDataflowGraph)
-
-```scala
-import org.apache.spark.sql.connect.pipelines.DataflowGraphRegistry
-
-val graphId = DataflowGraphRegistry.createDataflowGraph(
-  defaultCatalog=spark.catalog.currentCatalog(),
-  defaultDatabase=spark.catalog.currentDatabase,
-  defaultSqlConf=Map.empty)
-```
-
-### Step 2. Look Up Dataflow Graph
-
-[DataflowGraphRegistry](DataflowGraphRegistry.md#getDataflowGraphOrThrow)
-
-```scala
-import org.apache.spark.sql.pipelines.graph.GraphRegistrationContext
-
-val graphCtx: GraphRegistrationContext =
-  DataflowGraphRegistry.getDataflowGraphOrThrow(dataflowGraphId=graphId)
-```
-
-### Step 3. Create DataflowGraph
-
-[GraphRegistrationContext](GraphRegistrationContext.md#toDataflowGraph)
-
-```scala
-import org.apache.spark.sql.pipelines.graph.DataflowGraph
-
-val dp: DataflowGraph = graphCtx.toDataflowGraph
-```
-
-### Step 4. Create Update Context
-
-[PipelineUpdateContextImpl](PipelineUpdateContextImpl.md)
-
-```scala
-import org.apache.spark.sql.pipelines.graph.{ PipelineUpdateContext, PipelineUpdateContextImpl }
-import org.apache.spark.sql.pipelines.logging.PipelineEvent
-
-val swallowEventsCallback: PipelineEvent => Unit = _ => ()
-
-val updateCtx: PipelineUpdateContext =
-  new PipelineUpdateContextImpl(unresolvedGraph=dp, eventCallback=swallowEventsCallback)
-```
-
-### Step 5. Start Pipeline
-
-[PipelineExecution](PipelineExecution.md#runPipeline)
-
-```scala
-updateCtx.pipelineExecution.runPipeline()
 ```
 
 ## Learning Resources

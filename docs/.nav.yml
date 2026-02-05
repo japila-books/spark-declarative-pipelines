@@ -11,3 +11,4 @@ nav:
     - spark_connect_pipeline.md
   - SQL:
     - sql.md
+  - Demo: demo

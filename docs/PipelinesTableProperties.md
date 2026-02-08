@@ -1,6 +1,6 @@
 # PipelinesTableProperties
 
-`PipelinesTableProperties` defines the supported pipelines table properties.
+`PipelinesTableProperties` defines the table properties supported by Spark Declarative Pipelines.
 
 Pipelines table properties start with `pipelines.` prefix.
 

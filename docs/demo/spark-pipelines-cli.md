@@ -1,9 +1,10 @@
 ---
+title: Spark Pipelines CLI
 hide:
   - navigation
 ---
 
-# Demo: spark-pipelines CLI
+# Demo: Spark Pipelines CLI
 
 !!! warning "Activate Virtual Environment"
     Follow [Demo: Create Virtual Environment for Python Client](create-virtual-environment-for-python-client.md) before getting started with this demo.

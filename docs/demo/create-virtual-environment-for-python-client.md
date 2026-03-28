@@ -1,4 +1,5 @@
 ---
+title: Create Virtual Environment for Python Client
 hide:
   - navigation
 ---

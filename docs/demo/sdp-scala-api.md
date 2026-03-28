@@ -1,9 +1,10 @@
 ---
+title: SDP Scala API
 hide:
   - navigation
 ---
 
-# Demo: Scala API
+# Demo: SDP Scala API
 
 ## Register Dataflow Graph
 

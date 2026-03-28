@@ -1,4 +1,5 @@
 ---
+title: SDP Python API
 hide:
   - navigation
 ---

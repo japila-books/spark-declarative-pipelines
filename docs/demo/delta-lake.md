@@ -1,5 +1,5 @@
 ---
-title: Spark Declarative Pipelines with Delta Lake
+title: Delta Lake
 hide:
   - navigation
 ---
@@ -17,6 +17,7 @@ uvx --with "pyspark[pipelines]==4.1.1" spark-pipelines init --name sdp-delta
 Switch to `sdp-delta` directory and execute `dry-run`.
 
 ```shell
+cd sdp-delta && \
 uvx --with "pyspark[pipelines]==4.1.1" spark-pipelines dry-run
 ```
 
@@ -48,7 +49,8 @@ rm -rf transformations/*
 
 ### Spark Remote Client and DeltaCatalog
 
-Add configuration to `spark-pipeline.yml`.
+Edit `spark-pipeline.yml` to add extra `spark.remote` configuration.
+With the configuration specified in the pipeline spec, you will not have to specify it on command line.
 
 ```yaml title="spark-pipeline.yml"
 name: sdp-delta
@@ -62,7 +64,11 @@ configuration:
 
 ## Start Spark Connect Server
 
-In your Apache Spark installation directory, execute the following command:
+Download and install [Apache Spark 4.1.1](https://spark.apache.org/downloads.html).
+
+Open another terminal and go to the installation directory of Apache Spark.
+
+Execute the following command:
 
 ```shell
 ./sbin/start-connect-server.sh \
@@ -71,11 +77,18 @@ In your Apache Spark installation directory, execute the following command:
   --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog
 ```
 
+??? note "Optional: review logs of Spark Connect Server"
+    Optionally, review the logs of the Spark Connect Server live.
+
+    ```shell
+    tail -f logs/*-org.apache.spark.sql.connect.service.SparkConnectServer-*.out
+    ```
+
 ## rates Delta Table
 
 Define a streaming delta table.
 
-Create `transformations/rates.py` transformation file with the following content.
+In your SDP project, create `transformations/rates.py` file with the following content:
 
 ```py title="transformations/rates.py"
 from pyspark import pipelines as dp
@@ -118,13 +131,15 @@ You should see some logs similar to the following:
 2026-03-29 19:27:24: Run is COMPLETED.
 ```
 
-## PySpark to Access Delta Table
+## PySpark Connect to Access Delta Table
+
+In yet another terminal, run a [PySpark Connect]({{ book.spark_connect }}/pyspark/) client.
 
 ```shell
 uvx --with "pyspark[pipelines]==4.1.1" pyspark --remote sc://localhost:15002
 ```
 
-There should be our `rates` table available.
+Show all the available tables. There should be our `rates` table.
 
 ```text
 >>> sql("show tables").show()
@@ -135,8 +150,11 @@ There should be our `rates` table available.
 +---------+---------+-----------+
 ```
 
-Depending on how many times you ran the SDP project, you can see different number of `timestamp` rows.
-The number of records per `timestamp` will always be `10`. Can you explain why?
+[Run the SDP project](#run-project) multiple times.
+
+Depending on how many times you ran the SDP project, you will see a different number of rows per `timestamp` group.
+The number of records will always be `10`, though.
+Can you explain why?
 
 ```text
 >>> spark.table("rates").groupBy('timestamp').count().show()
@@ -149,5 +167,6 @@ The number of records per `timestamp` will always be `10`. Can you explain why?
 +-------------------+-----+
 ```
 
-??? note "10"
-    The number of records per `timestamp` is `10` based on `rowsPerBatch` option of the source table (which is `rate-micro-batch`).
+??? warning "Spoiler alert: Why 10"
+    The number of records per `timestamp` is `10` based on `rowsPerBatch` option of the source table
+    (which is [Rate Per Micro-Batch]({{ book.structured_streaming }}/datasources/rate-micro-batch/) data source).

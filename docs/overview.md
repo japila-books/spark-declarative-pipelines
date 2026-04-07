@@ -1,14 +1,14 @@
 # Spark Declarative Pipelines
 
-**Spark Declarative Pipelines (SDP)** is a declarative framework for building data processing (ETL) pipelines on Apache Spark in [Python](python.md) and [SQL](sql.md) languages.
+**Spark Declarative Pipelines (SDP)** is a declarative framework for building data processing (ETL) pipelines on Apache Spark declaratively, in [Python](./pyspark/index.md) and [SQL](sql.md) languages.
 
 A Declarative Pipelines project is defined and configured in a [pipeline specification file](#pipeline-specification-file).
 
-A Declarative Pipelines project can be executed with [spark-pipelines](#spark-pipelines) shell script.
+A Declarative Pipelines project can be executed with [spark-pipelines](cli/index.md) shell script.
 
-Declarative Pipelines uses [Python decorators](python.md#python-decorators) to describe tables, views and flows, declaratively.
+Declarative Pipelines uses [Python decorators](./pyspark/index.md#python-decorators) to describe tables, views and flows, declaratively.
 
-The definitions of tables, views and flows are registered in [DataflowGraphRegistry](DataflowGraphRegistry.md) (with [GraphRegistrationContext](GraphRegistrationContext.md)s by graph IDs). A `GraphRegistrationContext` is [converted into a DataflowGraph](GraphRegistrationContext.md#toDataflowGraph) when `PipelinesHandler` is requested to [start a pipeline run](PipelinesHandler.md#startRun) (when [spark-pipelines](#spark-pipelines) script is launched with `run` or `dry-run` command).
+The definitions of tables, views and flows are registered in [DataflowGraphRegistry](DataflowGraphRegistry.md) (with [GraphRegistrationContext](GraphRegistrationContext.md)s by graph IDs). A `GraphRegistrationContext` is [converted into a DataflowGraph](GraphRegistrationContext.md#toDataflowGraph) when `PipelinesHandler` is requested to [start a pipeline run](spark-connect/PipelinesHandler.md#startRun) (when [spark-pipelines](cli/index.md) script is launched with `run` or `dry-run` command).
 
 Streaming flows are backed by streaming sources, and batch flows are backed by batch sources.
 
@@ -60,7 +60,7 @@ libraries:
 
 ## Spark Pipelines CLI { #spark-pipelines }
 
-`spark-pipelines` shell script is the **Spark Pipelines CLI** (that launches [org.apache.spark.deploy.SparkPipelines](SparkPipelines.md) behind the scenes).
+Spark Declarative Pipelines comes with [spark-pipelines](cli/index.md) shell script to launch a declarative pipelines project.
 
 ## Dataset Types
 
@@ -101,21 +101,7 @@ Streaming tables are published to a catalog.
 
 ## Spark Connect Only { #spark-connect }
 
-Declarative Pipelines currently only supports [Spark Connect]({{ book.spark_connect }}).
-
-```console
-$ ./bin/spark-pipelines --conf spark.api.mode=xxx
-...
-25/08/03 12:33:57 INFO SparkPipelines: --spark.api.mode must be 'connect'. Declarative Pipelines currently only supports Spark Connect.
-Exception in thread "main" org.apache.spark.SparkUserAppException: User application exited with 1
- at org.apache.spark.deploy.SparkPipelines$$anon$1.handle(SparkPipelines.scala:73)
- at org.apache.spark.launcher.SparkSubmitOptionParser.parse(SparkSubmitOptionParser.java:169)
- at org.apache.spark.deploy.SparkPipelines$$anon$1.<init>(SparkPipelines.scala:58)
- at org.apache.spark.deploy.SparkPipelines$.splitArgs(SparkPipelines.scala:57)
- at org.apache.spark.deploy.SparkPipelines$.constructSparkSubmitArgs(SparkPipelines.scala:43)
- at org.apache.spark.deploy.SparkPipelines$.main(SparkPipelines.scala:37)
- at org.apache.spark.deploy.SparkPipelines.main(SparkPipelines.scala)
-```
+Spark Declarative Pipelines supports [Spark Connect](./spark-connect/index.md) only.
 
 ## Learning Resources
 

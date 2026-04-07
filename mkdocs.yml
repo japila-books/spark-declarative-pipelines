@@ -98,6 +98,7 @@ extra:
     title: Spark Declarative Pipelines
     spark_sql: https://books.japila.pl/spark-sql-internals
     spark_connect: https://books.japila.pl/spark-connect-internals
+    spark_core: https://books.japila.pl/apache-spark-internals
     structured_streaming: https://books.japila.pl/spark-structured-streaming-internals
   scala:
     # https://github.com/apache/spark/blob/v4.1.1/pom.xml#L176

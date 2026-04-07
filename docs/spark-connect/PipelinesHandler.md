@@ -28,7 +28,7 @@ handlePipelinesCommand(
 | `DROP_DATAFLOW_GRAPH` | [Drops a pipeline](#DROP_DATAFLOW_GRAPH) ||
 | `DEFINE_OUTPUT` | [Defines an output](#DEFINE_OUTPUT) (a table, a materialized view, a temporary view or a sink) | [SparkConnectGraphElementRegistry](SparkConnectGraphElementRegistry.md#register_output) |
 | `DEFINE_FLOW` | [Defines a flow](#DEFINE_FLOW) | [SparkConnectGraphElementRegistry](SparkConnectGraphElementRegistry.md#register_flow) |
-| `START_RUN` | [Starts a pipeline run](#START_RUN) | [pyspark.pipelines.spark_connect_pipeline](spark_connect_pipeline.md#start_run) |
+| `START_RUN` | [Runs a pipeline update](#START_RUN) | [pyspark.pipelines.spark_connect_pipeline](spark_connect_pipeline.md#start_run) |
 | `DEFINE_SQL_GRAPH_ELEMENTS` | [DEFINE_SQL_GRAPH_ELEMENTS](#DEFINE_SQL_GRAPH_ELEMENTS) | [SparkConnectGraphElementRegistry](SparkConnectGraphElementRegistry.md#register_sql) |
 
 ??? warning "UnsupportedOperationException"
@@ -72,7 +72,7 @@ Define pipelines flow cmd received: [cmd]
 
 `handlePipelinesCommand` [defines a flow](#defineFlow).
 
-### START_RUN { #START_RUN }
+### <span id="StartRun"> START_RUN { #START_RUN }
 
 [handlePipelinesCommand](#handlePipelinesCommand) prints out the following INFO message to the logs:
 
@@ -80,13 +80,13 @@ Define pipelines flow cmd received: [cmd]
 Start pipeline cmd received: [cmd]
 ```
 
-`handlePipelinesCommand` [starts a pipeline run](#startRun).
+`handlePipelinesCommand` [runs a pipeline update](#startRun).
 
 ### DEFINE_SQL_GRAPH_ELEMENTS { #DEFINE_SQL_GRAPH_ELEMENTS }
 
 [handlePipelinesCommand](#handlePipelinesCommand)...FIXME
 
-## Start Pipeline Run { #startRun }
+## Run Pipeline Update { #startRun }
 
 ```scala
 startRun(

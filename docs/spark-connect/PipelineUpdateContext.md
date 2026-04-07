@@ -42,6 +42,10 @@ storageRoot: String
 
 The root storage location of pipeline metadata (e.g., checkpoints of [streaming flows](ResolvedFlow.md))
 
+See:
+
+* [PipelineUpdateContextImpl](PipelineUpdateContextImpl.md#storageRoot)
+
 Used when:
 
 * `FlowSystemMetadata` is requested to [flowCheckpointsDirOpt](FlowSystemMetadata.md#flowCheckpointsDirOpt)

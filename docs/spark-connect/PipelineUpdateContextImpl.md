@@ -10,13 +10,24 @@
 * <span id="eventCallback"> `PipelineEvent` Callback (`PipelineEvent => Unit`)
 * <span id="refreshTables"> `TableFilter` of the tables to be refreshed (default: `AllTables`)
 * <span id="fullRefreshTables"> `TableFilter` of the tables to be refreshed (default: `NoTables`)
-* <span id="storageRoot"> [Storage root](PipelineUpdateContext.md#storageRoot)
+* [Pipeline Storage Location](#storageRoot)
 
 While being created, `PipelineUpdateContextImpl` [validates the storage root](#validateStorageRoot).
 
 `PipelineUpdateContextImpl` is created when:
 
 * `PipelinesHandler` is requested to [run a pipeline](PipelinesHandler.md#startRun)
+
+### Pipeline Storage Location { #storageRoot }
+
+!!! note "Storage Root"
+    **Storage Location** is also known as **Storage Root**.
+
+`PipelineUpdateContextImpl` is given a [storage location](PipelineUpdateContext.md#storageRoot) when [created](#creating-instance).
+
+The storage root is the `storage` of the `StartRun` pipeline command (when `PipelinesHandler` is requested to [run a pipeline update](PipelinesHandler.md#startRun)).
+
+This storage root is immediately [validated](#validateStorageRoot).
 
 ### Validate Storage Root { #validateStorageRoot }
 
@@ -28,7 +39,7 @@ validateStorageRoot(
 `validateStorageRoot` asserts that the given `storageRoot` meets the following requirements:
 
 1. It is an absolute path
-1. The schema is defined
+1. The URI schema is defined
 
 Otherwise, `validateStorageRoot` reports a `SparkException`:
 

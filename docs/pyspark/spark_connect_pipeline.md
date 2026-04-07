@@ -37,7 +37,12 @@ start_run(
 ) -> Iterator[Dict[str, Any]]
 ```
 
-`start_run`...FIXME
+`start_run` creates a `StartRun` pipeline command (with all the arguments).
+
+`start_run` sends the `StartRun` command for execution (to [Spark Connect server](../spark-connect/PipelinesHandler.md#StartRun)).
+
+??? note "storage"
+    `storage` argument is the [storage](PipelineSpec.md#storage)
 
 ---
 

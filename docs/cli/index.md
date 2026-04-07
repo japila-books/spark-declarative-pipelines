@@ -1,19 +1,17 @@
----
-title: SparkPipelines
-subtitle: Spark Pipelines CLI
----
+# Spark Pipelines CLI
 
-# SparkPipelines &mdash; Spark Pipelines CLI
+Spark Declarative Pipelines comes with [spark-pipelines](#spark-pipelines) shell script to launch a Spark Declarative Pipelines project.
 
-`SparkPipelines` is a standalone application that is executed using [spark-pipelines](./index.md#spark-pipelines) shell script.
+```bash
+$SPARK_HOME/bin/spark-pipelines
+```
 
-`SparkPipelines` is a Scala "launchpad" to execute [pyspark/pipelines/cli.py](#pyspark-pipelines-cli) Python script (through [SparkSubmit]({{ book.spark_core }}/tools/spark-submit/SparkSubmit/)).
+`spark-pipelines` prepares the runtime environment to run [SparkPipelines](SparkPipelines.md) (with the path to [cli.py](cli.md) Python script).
 
-## cli.py { #pyspark-pipelines-cli }
+`cli.py` does two very critical steps in a SDP project's execution:
 
-`pyspark/pipelines/cli.py` is the heart of the Spark Pipelines CLI (launched using [spark-pipelines](./index.md#spark-pipelines) shell script).
-
-As a Python script, `cli.py` can simply import Python libraries (to trigger their execution) whereas SQL libraries are left untouched and sent over the wire to a Spark Connect server ([PipelinesHandler](PipelinesHandler.md)) for execution.
+1. As a Python script, the `cli.py` imports all the Python transformation scripts written by a SDP developer (that are immediately executed per [Python import system](https://docs.python.org/3/reference/import.html)'s rules).
+1. SQL libraries remain untouched and sent over the wire to a Spark Connect server ([PipelinesHandler](../PipelinesHandler.md)) for execution.
 
 The Pipelines CLI supports the following commands:
 
@@ -21,25 +19,15 @@ The Pipelines CLI supports the following commands:
 * [init](#init)
 * [run](#run)
 
-=== "uv run"
+=== "uv"
 
     ```console
-    $ pwd
-    /Users/jacek/oss/spark/python
-
-    $ PYTHONPATH=. uv run \
-        --with grpcio-status \
-        --with grpcio \
-        --with pyarrow \
-        --with pandas \
-        --with pyspark \
-        python pyspark/pipelines/cli.py
-    ...
-    usage: cli.py [-h] {run,dry-run,init} ...
-    cli.py: error: the following arguments are required: command
+    uvx --with "pyspark[pipelines]" spark-pipelines
     ```
 
-### dry-run
+## spark-pipelines Shell Script { #spark-pipelines }
+
+## dry-run
 
 Launch a run that just validates the graph and checks for errors
 
@@ -47,7 +35,7 @@ Option | Description | Default
 -|-|-
  `--spec` | Path to the pipeline spec | (undefined)
 
-### init
+## init
 
 Generate a sample pipeline project, including a spec file and example definitions
 
@@ -62,7 +50,7 @@ cd 'hello-pipelines'
 spark-pipelines run
 ```
 
-### run
+## run
 
 Run a pipeline. If no `--refresh` option specified, a default incremental update is performed.
 

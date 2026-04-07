@@ -2,7 +2,7 @@
 
 `DataflowGraphRegistry` is a registry of [Dataflow Graphs](#dataflowGraphs) (a mere wrapper around a collection of [GraphRegistrationContext](GraphRegistrationContext.md)s)
 
-!!! note "Scala object"
+??? note "Scala object"
     `DataflowGraphRegistry` is an `object` in Scala which means it is a class that has exactly one instance (itself).
     A Scala `object` is created lazily when it is referenced for the first time.
 

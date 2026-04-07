@@ -6,9 +6,9 @@ nav:
     - configuration-properties.md
     - Logical Operators: logical-operators
     - "*"
-  - Python:
-    - python.md
-    - spark_connect_pipeline.md
+  - CLI: cli
+  - PySpark: pyspark
   - SQL:
     - sql.md
+  - Spark Connect: spark-connect
   - Demos: demo

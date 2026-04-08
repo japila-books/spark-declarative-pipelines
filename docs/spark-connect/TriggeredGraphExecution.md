@@ -1,6 +1,6 @@
 # TriggeredGraphExecution
 
-`TriggeredGraphExecution` is a [GraphExecution](GraphExecution.md) for the [DataflowGraph](#graphForExecution) and [PipelineUpdateContext](#env).
+`TriggeredGraphExecution` is a [GraphExecution](GraphExecution.md) for the [DataflowGraph](#graphForExecution) (in [PipelineUpdateContext](#env)).
 
 ## Creating Instance
 
@@ -14,6 +14,38 @@
 `TriggeredGraphExecution` is created when:
 
 * `PipelineExecution` is requested to [run a pipeline update](PipelineExecution.md#startPipeline)
+
+## pipelineState Lookup Table { #pipelineState }
+
+```scala
+pipelineState: Map[TableIdentifier, StreamState]
+```
+
+`pipelineState` is a lookup table (of `TableIdentifier`s with their [StreamState](#StreamState)s) supporting full concurrency of retrievals and high expected concurrency for updates.
+
+`pipelineState` is used when:
+
+* `TriggeredGraphExecution` is requested to [flowsWithState](#flowsWithState), [getRunTerminationReason](#getRunTerminationReason), [recordFailed](#recordFailed), [recordSkippedIfSelected](#recordSkippedIfSelected), [recordSuccess](#recordSuccess), [start](#start), [stopInternal](#stopInternal), [topologicalExecution](#topologicalExecution)
+
+## StreamState { #StreamState }
+
+A flow can be in exactly one `StreamState`:
+
+* `CANCELED`
+* `EXCLUDED`
+* `IDLE`
+* `QUEUED`
+* `RUNNING`
+* `SKIPPED`
+* `SUCCESSFUL`
+* `TERMINATED_WITH_ERROR`
+
+A flow's state can be looked up in the [pipelineState](#pipelineState) registry.
+
+??? note "Sealed Trait"
+    `StreamState` is a Scala **sealed trait** which means that all of the implementations are in the same compilation unit (a single file).
+
+    Learn more in the [Scala Language Specification]({{ scala.spec }}/05-classes-and-objects.html#sealed).
 
 ## Topological Execution Thread { #topologicalExecutionThread }
 
@@ -84,9 +116,20 @@ Starting flow [flow_identifier]
 
 `startFlow` requests this [PipelineUpdateContext](#env) for the [FlowProgressEventLogger](PipelineUpdateContext.md#flowProgressEventLogger) to [recordPlanningForBatchFlow](FlowProgressEventLogger.md#recordPlanningForBatchFlow).
 
-`startFlow` [planAndStartFlow](#planAndStartFlow).
+`startFlow` [plans and starts the flow](#planAndStartFlow) (that may or may not give a [FlowExecution](FlowExecution.md)).
 
-`startFlow`...FIXME
+For the flow that has been executed successfully (and available as the [FlowExecution](FlowExecution.md)), `startFlow` marks it as `RUNNING` (in the [pipelineState](#pipelineState) registry).
+`startFlow` prints out the following INFO message to the logs:
+
+```text
+Flow [flowIdentifier] started.
+```
+
+Otherwise, for an [ONCE](Flow.md#once) flow, `startFlow` requests this [PipelineUpdateContext](#env) for the [FlowProgressEventLogger](PipelineUpdateContext.md#flowProgressEventLogger) to [recordIdle](FlowProgressEventLogger.md#recordIdle) and marks it as `IDLE` (in the [pipelineState](#pipelineState) registry).
+
+For a non-[ONCE](Flow.md#once) flow that has not been executed successfully, `startFlow` requests this [PipelineUpdateContext](#env) for the [FlowProgressEventLogger](PipelineUpdateContext.md#flowProgressEventLogger) to [recordSkipped](FlowProgressEventLogger.md#recordSkipped) and marks it as `SKIPPED` (in the [pipelineState](#pipelineState) registry).
+
+For any non-fatal exceptions, `startFlow` [recordFailed](#recordFailed).
 
 ## Streaming Trigger { #streamTrigger }
 

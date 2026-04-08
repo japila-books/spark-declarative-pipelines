@@ -4,6 +4,18 @@
 
 ## Contract (Subset)
 
+### FlowProgressEventLogger { #flowProgressEventLogger }
+
+```scala
+flowProgressEventLogger: FlowProgressEventLogger
+```
+
+[FlowProgressEventLogger](FlowProgressEventLogger.md) to emit progress events to
+
+See:
+
+* [PipelineUpdateContextImpl](PipelineUpdateContextImpl.md#flowProgressEventLogger)
+
 ### fullRefreshTables { #fullRefreshTables }
 
 ```scala

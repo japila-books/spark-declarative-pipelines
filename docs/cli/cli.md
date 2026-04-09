@@ -5,7 +5,21 @@ subtitle: pyspark/pipelines/cli.py
 
 # cli Python Module
 
-[pyspark/pipelines/cli.py](cli.md) Python module is at the heart of the [Spark Pipelines CLI](index.md).
+`pyspark/pipelines/cli.py` Python module is at the heart of the [Spark Pipelines CLI](index.md).
+
+## Launch Standalone Application { #main }
+
+```py
+main() -> None
+```
+
+`main`...FIXME
+
+---
+
+`main` is used when:
+
+* `SparkPipelines` is [launched as a standalone application](SparkPipelines.md#main) (with the first argument being the path to this `pyspark/pipelines/cli.py` module)
 
 ## Run Pipeline { #run }
 

@@ -1,12 +1,20 @@
 # Spark Pipelines CLI
 
-Spark Declarative Pipelines comes with [spark-pipelines](#spark-pipelines) shell script to launch a Spark Declarative Pipelines project.
+Spark Declarative Pipelines comes with [spark-pipelines](#spark-pipelines) shell script to manage declarative pipelines projects.
 
-```bash
-$SPARK_HOME/bin/spark-pipelines
-```
+=== "uv"
 
-`spark-pipelines` prepares the runtime environment to run [SparkPipelines](SparkPipelines.md) (with the path to [cli.py](cli.md) Python script).
+    ```shell
+    uvx --with "pyspark[pipelines]==4.1.1" spark-pipelines
+    ```
+
+=== "Local installation"
+
+    ```shell
+    $SPARK_HOME/bin/spark-pipelines
+    ```
+
+Internally, `spark-pipelines` prepares the runtime environment to run [SparkPipelines](SparkPipelines.md) standalone application (with the path to [pyspark/pipelines/cli.py](cli.md) Python script).
 
 `cli.py` does two very critical steps in a SDP project's execution:
 

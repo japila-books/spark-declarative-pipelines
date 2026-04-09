@@ -6,9 +6,18 @@ hide:
 
 # Demo: Spark Declarative Pipelines with Delta Lake
 
+This demo walks through building a Spark Declarative Pipelines project that writes streaming data to a [Delta Lake]({{ book.delta_lake }}) table.
+
+This demo will teach you how to do the following:
+
+1. Create an SDP project.
+1. Configure a [Spark Connect]({{ book.spark_connect }}) server with Delta Lake-specific configuration.
+1. Run the pipeline.
+1. Use a PySpark Connect client to work with the delta table.
+
 ## Create SDP Project
 
-Create a sample SDP project.
+Create a sample SDP project using [spark-pipelines CLI](../cli/index.md).
 
 ```shell
 uvx --with "pyspark[pipelines]==4.1.1" spark-pipelines init --name sdp-delta
@@ -47,7 +56,7 @@ Let's remove the default transformations. They are not needed for the purpose of
 rm -rf transformations/*
 ```
 
-### Spark Remote Client and DeltaCatalog
+### Set Up Spark Connect Client
 
 Edit `spark-pipeline.yml` to add extra `spark.remote` configuration.
 With the configuration specified in the pipeline spec, you will not have to specify it on command line.
@@ -84,9 +93,9 @@ Execute the following command:
     tail -f logs/*-org.apache.spark.sql.connect.service.SparkConnectServer-*.out
     ```
 
-## rates Delta Table
+## Define rates Delta Table
 
-Define a streaming delta table.
+Define a streaming `rates` delta table.
 
 In your SDP project, create `transformations/rates.py` file with the following content:
 

@@ -103,6 +103,10 @@ Streaming tables are published to a catalog.
 
 Spark Declarative Pipelines supports [Spark Connect](./spark-connect/index.md) only.
 
+[spark-pipeline CLI](./cli/index.md) asserts that `spark.api.mode` configuration property can only be `connect` (or throws a [SparkUserAppException](./cli/SparkPipelines.md#splitArgs)).
+
+spark-pipeline CLI uses `local` as the default value of `--remote` command-line option.
+
 ## Learning Resources
 
 * [Spark Declarative Pipelines Programming Guide]({{ spark.docs }}/declarative-pipelines-programming-guide.html)

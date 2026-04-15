@@ -3,7 +3,7 @@ site_url: https://books.japila.pl/spark-declarative-pipelines
 site_author: Jacek Laskowski
 site_description: Demystifying inner-workings of Spark Declarative Pipelines
 
-repo_name: Github
+repo_name: GitHub
 repo_url: https://github.com/japila-books/spark-declarative-pipelines
 edit_uri: edit/main/docs/
 
@@ -67,10 +67,15 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
@@ -97,10 +102,11 @@ extra:
   book:
     title: Spark Declarative Pipelines
     delta_lake: https://books.japila.pl/delta-lake-internals
-    spark_sql: https://books.japila.pl/spark-sql-internals
     spark_connect: https://books.japila.pl/spark-connect-internals
     spark_core: https://books.japila.pl/apache-spark-internals
+    spark_sql: https://books.japila.pl/spark-sql-internals
     structured_streaming: https://books.japila.pl/spark-structured-streaming-internals
+    unity_catalog: https://books.japila.pl/unity-catalog-internals
   scala:
     # https://github.com/apache/spark/blob/v4.1.1/pom.xml#L176
     version: 2.13.17

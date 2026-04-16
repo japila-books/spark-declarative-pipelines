@@ -2,350 +2,350 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/Output/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/PersistedView/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/PipelinesErrors/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/PipelinesTableProperties/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/SQLConf/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/TemporaryView/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/VirtualTableInput/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/configuration-properties/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/overview/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/sql/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/cli/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/cli/PipelineSpec/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/cli/SparkPipelines/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/cli/cli/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/demo/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/demo/create-virtual-environment-for-python-client/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/demo/delta-lake/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/demo/sdp-python-api/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/demo/sdp-scala-api/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/demo/spark-pipelines-cli/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/demo/unity-catalog/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreateFlowCommand/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreateMaterializedViewAsSelect/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreatePipelineDataset/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreatePipelineDatasetAsSelect/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreateStreamingTable/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/logical-operators/CreateStreamingTableAsSelect/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/pyspark/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/pyspark/MaterializedView/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/pyspark/spark_connect_pipeline/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/AppendOnceFlow/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/BatchTableWrite/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/CompleteFlow/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/CoreDataflowNodeProcessor/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/DataflowGraph/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/DataflowGraphRegistry/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/Dataset/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/DatasetManager/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/Flow/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/FlowAnalysis/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/FlowAnalysisContext/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/FlowExecution/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/FlowFunction/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/FlowFunctionResult/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/FlowPlanner/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/FlowProgressEventLogger/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/FlowResolver/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/FlowSystemMetadata/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/GraphElement/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/GraphElementRegistry/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/GraphElementTypeUtils/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/GraphExecution/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/GraphIdentifierManager/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/GraphOperations/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/GraphRegistrationContext/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/GraphValidations/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/Input/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/InputReadOptions/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/PipelineEventSender/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/PipelineExecution/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/PipelineUpdateContext/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/PipelineUpdateContextImpl/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/PipelinesHandler/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/ResolutionCompletedFlow/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/ResolutionFailedFlow/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/ResolvedFlow/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/SchemaInferenceUtils/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/Sink/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/SinkImpl/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/SinkWrite/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/SparkConnectGraphElementRegistry/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/SqlGraphRegistrationContext/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/SqlGraphRegistrationContextState/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/State/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/StreamListener/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/StreamingFlow/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/StreamingFlowExecution/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/StreamingTableWrite/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/SystemMetadata/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/Table/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/TableInput/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/TriggeredGraphExecution/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/UnresolvedFlow/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/spark-connect/View/</loc>
-         <lastmod>2026-04-15</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
 </urlset>

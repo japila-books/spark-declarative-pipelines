@@ -108,7 +108,7 @@ extra:
     structured_streaming: https://books.japila.pl/spark-structured-streaming-internals
     unity_catalog: https://books.japila.pl/unity-catalog-internals
   scala:
-    # https://github.com/apache/spark/blob/v4.2.0-preview5/pom.xml#L175
+    # https://github.com/apache/spark/blob/branch-4.2/pom.xml#L175
     version: 2.13.18
     binary_version: 2.13
     api: https://www.scala-lang.org/api/2.13.18
@@ -128,11 +128,11 @@ extra:
     - icon: fontawesome/brands/mastodon
       link: https://fosstodon.org/@jaceklaskowski
   spark:
-    # https://github.com/apache/spark/blob/v4.2.0-preview5/pom.xml#L29
-    version: 4.2.0-preview5
+    # https://github.com/apache/spark/blob/branch-4.2/pom.xml#L29
+    version: 4.2.0-SNAPSHOT
     commit: https://github.com/apache/spark/commit
-    docs: https://spark.apache.org/docs/4.2.0-preview5
-    github: https://github.com/apache/spark/blob/v4.2.0-preview5
+    docs: https://spark.apache.org/docs/4.2.0-SNAPSHOT
+    github: https://github.com/apache/spark/blob/branch-4.2
     jira: https://issues.apache.org/jira/browse
 
 validation:

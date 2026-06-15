@@ -57,6 +57,26 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/auto-cdc/AutoCdcMergeWriteBase/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/auto-cdc/ChangeArgs/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/auto-cdc/Scd1BatchProcessor/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/auto-cdc/Scd1ForeachBatchHandler/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://books.japila.pl/spark-declarative-pipelines/auto-cdc/Scd1MergeStreamingWrite/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://books.japila.pl/spark-declarative-pipelines/cli/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>

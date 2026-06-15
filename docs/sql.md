@@ -16,7 +16,7 @@ Pipelines elements are defined in files with `.sql` file extension.
 
 The SQL files are included as `libraries` in a [pipelines specification file](overview.md#pipeline-specification-file).
 
-[SqlGraphRegistrationContext](SqlGraphRegistrationContext.md) is used on [Spark Connect Server]({{ book.spark_connect }}/server) to handle SQL statements (from SQL definitions files and [Python decorators](python.md#python-decorators)).
+[SqlGraphRegistrationContext](./spark-connect/SqlGraphRegistrationContext.md) is used on [Spark Connect Server]({{ book.spark_connect }}/server) to handle SQL statements (from SQL definitions files and [Python decorators](pyspark/index.md#python-decorators)).
 
 A streaming table can be defined without a query, as streaming tables' data can be backed by standalone flows.
 During a pipeline execution, it is validated that a streaming table has at least one standalone flow writing to the table, if no query is specified in the create statement itself.

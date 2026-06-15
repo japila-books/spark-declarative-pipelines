@@ -8,7 +8,7 @@ subtitle: Spark Connect Endpoint
 
 `PipelinesHandler` acts as a bridge between Python execution environment of Spark Declarative Pipelines and [Spark Connect Server]({{ book.spark_connect }}/server/) (where pipeline execution happens).
 
-![PipelinesHandler](./images/PipelinesHandler.png)
+![PipelinesHandler](../images/PipelinesHandler.png)
 
 ## Handle Pipelines Command { #handlePipelinesCommand }
 
@@ -26,10 +26,10 @@ handlePipelinesCommand(
 |-----------------|-------------|-----------|
 | `CREATE_DATAFLOW_GRAPH` | [Creates a new dataflow graph](#CREATE_DATAFLOW_GRAPH) | [pyspark.pipelines.spark_connect_pipeline](spark_connect_pipeline.md#create_dataflow_graph) |
 | `DROP_DATAFLOW_GRAPH` | [Drops a pipeline](#DROP_DATAFLOW_GRAPH) ||
-| `DEFINE_OUTPUT` | [Defines an output](#DEFINE_OUTPUT) (a table, a materialized view, a temporary view or a sink) | [SparkConnectGraphElementRegistry](SparkConnectGraphElementRegistry.md#register_output) |
-| `DEFINE_FLOW` | [Defines a flow](#DEFINE_FLOW) | [SparkConnectGraphElementRegistry](SparkConnectGraphElementRegistry.md#register_flow) |
+| `DEFINE_OUTPUT` | [Defines an output](#DEFINE_OUTPUT) (a table, a materialized view, a temporary view or a sink) | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_output) |
+| `DEFINE_FLOW` | [Defines a flow](#DEFINE_FLOW) | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_flow) |
 | `START_RUN` | [Runs a pipeline update](#START_RUN) | [pyspark.pipelines.spark_connect_pipeline](spark_connect_pipeline.md#start_run) |
-| `DEFINE_SQL_GRAPH_ELEMENTS` | [DEFINE_SQL_GRAPH_ELEMENTS](#DEFINE_SQL_GRAPH_ELEMENTS) | [SparkConnectGraphElementRegistry](SparkConnectGraphElementRegistry.md#register_sql) |
+| `DEFINE_SQL_GRAPH_ELEMENTS` | [DEFINE_SQL_GRAPH_ELEMENTS](#DEFINE_SQL_GRAPH_ELEMENTS) | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_sql) |
 
 ??? warning "UnsupportedOperationException"
     `handlePipelinesCommand` reports an `UnsupportedOperationException` for incorrect commands:
@@ -180,6 +180,7 @@ defineOutput(
 defineFlow(
   flow: proto.PipelineCommand.DefineFlow,
   transformRelationFunc: Relation => LogicalPlan,
+  transformExpressionFunc: proto.Expression => Expression,
   sessionHolder: SessionHolder): TableIdentifier
 ```
 
@@ -204,3 +205,19 @@ defineFlow(
     1. The given `flow` is not an implicit flow, but is defined with a multi-part identifier.
 
 In the end, `defineFlow` [registers a flow](GraphRegistrationContext.md#registerFlow) (with a proper [FlowFunction](FlowAnalysis.md#createFlowFunctionFromLogicalPlan)).
+
+### Create AutoCdcFlow { #buildAutoCdcFlow }
+
+```scala
+buildAutoCdcFlow(
+  autoCdcDetails: AutoCdcFlowDetails,
+  flow: proto.PipelineCommand.DefineFlow,
+  flowIdentifier: TableIdentifier,
+  destinationIdentifier: TableIdentifier,
+  defaultCatalog: String,
+  defaultDatabase: String,
+  sessionHolder: SessionHolder,
+  transformExpressionFunc: proto.Expression => Expression): AutoCdcFlow
+```
+
+`buildAutoCdcFlow` creates a [AutoCdcFlow](../auto-cdc/AutoCdcFlow.md).

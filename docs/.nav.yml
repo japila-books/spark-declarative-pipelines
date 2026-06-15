@@ -4,6 +4,7 @@ nav:
   - Internals:
     - Overview: overview.md
     - configuration-properties.md
+    - AutoCDC: auto-cdc/
     - Logical Operators: logical-operators
     - "*"
   - CLI: cli

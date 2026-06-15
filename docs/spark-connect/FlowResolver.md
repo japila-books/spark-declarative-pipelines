@@ -25,16 +25,29 @@ attemptResolveFlow(
 
 * `CoreDataflowNodeProcessor` is requested to [processUnresolvedFlow](CoreDataflowNodeProcessor.md#processUnresolvedFlow)
 
-### convertResolvedToTypedFlow { #convertResolvedToTypedFlow }
+### resolveFlow { #resolveFlow }
 
 ```scala
-convertResolvedToTypedFlow(
+resolveFlow(
   flow: UnresolvedFlow,
   funcResult: FlowFunctionResult): ResolvedFlow
 ```
 
-`convertResolvedToTypedFlow` converts the given [UnresolvedFlow](UnresolvedFlow.md) as follows (and in that order):
+`resolveFlow` resolves the given [UnresolvedFlow](UnresolvedFlow.md) as follows:
 
-* [AppendOnceFlow](AppendOnceFlow.md) for a [once flow](UnresolvedFlow.md#once)
+* For [AutoCdcFlow](../auto-cdc/AutoCdcFlow.md), `resolveFlow` creates a [AutoCdcMergeFlow](../auto-cdc/AutoCdcMergeFlow.md).
+* For [UntypedFlow](UntypedFlow.md), `resolveFlow` [transformUntypedFlowToResolvedFlow](#transformUntypedFlowToResolvedFlow).
+
+### transformUntypedFlowToResolvedFlow { #transformUntypedFlowToResolvedFlow }
+
+```scala
+transformUntypedFlowToResolvedFlow(
+  flow: UntypedFlow,
+  funcResult: FlowFunctionResult): ResolvedFlow
+```
+
+`transformUntypedFlowToResolvedFlow` resolves the given [UntypedFlow](UntypedFlow.md) as follows (and in that order):
+
+* [AppendOnceFlow](AppendOnceFlow.md) for a [once flow](UntypedFlow.md#once)
 * [StreamingFlow](StreamingFlow.md) for the given [FlowFunctionResult](FlowFunctionResult.md) with a streaming `DataFrame`
 * [CompleteFlow](CompleteFlow.md), otherwise

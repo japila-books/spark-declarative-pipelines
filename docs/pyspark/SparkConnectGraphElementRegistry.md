@@ -2,7 +2,7 @@
 
 `SparkConnectGraphElementRegistry` is a [GraphElementRegistry](GraphElementRegistry.md).
 
-`SparkConnectGraphElementRegistry` acts as a communication bridge between Spark Declarative Pipelines Python execution environment and Spark Connect Server (with [PipelinesHandler](PipelinesHandler.md)).
+`SparkConnectGraphElementRegistry` acts as a communication bridge between Spark Declarative Pipelines Python execution environment and Spark Connect Server (with [PipelinesHandler](../spark-connect/PipelinesHandler.md)).
 
 ## Creating Instance
 
@@ -14,6 +14,24 @@
 `SparkConnectGraphElementRegistry` is created when:
 
 * `pyspark.pipelines.cli` is requested to [run](#run)
+
+## Register Auto CDC Flow { #register_auto_cdc_flow }
+
+??? note "GraphElementRegistry"
+
+    ```py
+    register_auto_cdc_flow(
+        self,
+        flow: AutoCdcFlow,
+    ) -> None
+    ```
+
+    `register_auto_cdc_flow` is part of the [GraphElementRegistry](GraphElementRegistry.md#register_auto_cdc_flow) abstraction.
+
+`register_flow` requests this [SparkConnectClient](#spark) to [execute](#execute_command) a `PipelineCommand.DefineFlow` command (with `AutoCdcFlowDetails`).
+
+??? note "PipelinesHandler on Spark Connect Server"
+    `DefineFlow` commands are handled by [PipelinesHandler](../spark-connect/PipelinesHandler.md#DEFINE_FLOW) on Spark Connect Server.
 
 ## Register Flow { #register_flow }
 
@@ -31,7 +49,7 @@
 `register_flow` requests this [SparkConnectClient](#spark) to [execute](#execute_command) a `PipelineCommand.DefineFlow` command.
 
 ??? note "PipelinesHandler on Spark Connect Server"
-    `DefineFlow` commands are handled by [PipelinesHandler](PipelinesHandler.md#DEFINE_FLOW) on Spark Connect Server.
+    `DefineFlow` commands are handled by [PipelinesHandler](../spark-connect/PipelinesHandler.md#DEFINE_FLOW) on Spark Connect Server.
 
 ## Register Output { #register_output }
 
@@ -49,4 +67,4 @@
 `register_output` requests this [SparkConnectClient](#spark) to [execute](#execute_command) a `DefineOutput` pipeline command.
 
 ??? note "PipelinesHandler on Spark Connect Server"
-    `DefineOutput` command is handled by [PipelinesHandler](PipelinesHandler.md#DEFINE_OUTPUT) on Spark Connect Server.
+    `DefineOutput` command is handled by [PipelinesHandler](../spark-connect/PipelinesHandler.md#DEFINE_OUTPUT) on Spark Connect Server.

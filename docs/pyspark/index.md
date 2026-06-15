@@ -14,9 +14,10 @@ from pyspark import pipelines as dp
 
 ## pyspark.pipelines Python Module { #pyspark_pipelines }
 
-`pyspark.pipelines` module (in `__init__.py`) imports `pyspark.pipelines.api` module to expose the following Python functions (incl. decorators) to wildcard imports:
+`pyspark.pipelines` module (in `__init__.py`) imports `pyspark.pipelines.api` module to expose the following Python functions (incl. [decorators](#python-decorators)) to wildcard imports:
 
 * [append_flow](#append_flow)
+* [create_auto_cdc_flow](#create_auto_cdc_flow)
 * [create_sink](#create_sink)
 * [create_streaming_table](#create_streaming_table)
 * [materialized_view](#materialized_view)
@@ -51,6 +52,27 @@ append_flow(
 
 `target` is the name of the dataset (_destination_) this flow writes to.
 
+## dp.create_auto_cdc_flow { #create_auto_cdc_flow }
+
+```py
+create_auto_cdc_flow(
+    target: str,
+    source: str,
+    keys: Union[List[str], List[Column]],
+    sequence_by: Union[str, Column],
+    apply_as_deletes: Optional[Union[str, Column]] = None,
+    column_list: Optional[Union[List[str], List[Column]]] = None,
+    except_column_list: Optional[Union[List[str], List[Column]]] = None,
+    stored_as_scd_type: Optional[Literal[1, "1"]] = None,
+    name: Optional[str] = None,
+) -> None
+```
+
+[Registers an AutoCdcFlow](GraphElementRegistry.md#register_auto_cdc_flow) in the active [GraphElementRegistry](GraphElementRegistry.md).
+
+??? warning "Not Python Decorator"
+    Unlike the others, `create_auto_cdc_flow` is not a [Python decorator](https://peps.python.org/pep-0318/) (`Callable`).
+
 ## dp.create_sink { #create_sink }
 
 ```py
@@ -81,10 +103,10 @@ create_streaming_table(
 ) -> None
 ```
 
+[Registers](GraphElementRegistry.md#register_output) a `StreamingTable` dataset (in the active [GraphElementRegistry](GraphElementRegistry.md)) for [Append Flows](#append-flows).
+
 ??? warning "Not Python Decorator"
     Unlike the others, `create_streaming_table` is not a [Python decorator](https://peps.python.org/pep-0318/) (`Callable`).
-
-[Registers](GraphElementRegistry.md#register_output) a `StreamingTable` dataset (in the active [GraphElementRegistry](GraphElementRegistry.md)) for [Append Flows](#append-flows).
 
 ## @dp.materialized_view { #materialized_view }
 

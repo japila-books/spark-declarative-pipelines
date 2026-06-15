@@ -108,7 +108,7 @@ Dataflow graph created (ID: [dataflow_graph_id]).
 Registering graph elements...
 ```
 
-`run` creates a [SparkConnectGraphElementRegistry](SparkConnectGraphElementRegistry.md) and `register_definitions`.
+`run` creates a [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md) and `register_definitions`.
 
 `run` prints out the following log message:
 

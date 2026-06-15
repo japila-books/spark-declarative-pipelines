@@ -7,6 +7,8 @@
 
 Graph elements can be defined in Python and [SQL](#register_sql).
 
+`GraphElementRegistry` is a Python abstract class defined in `pyspark/pipelines/graph_element_registry.py`.
+
 ## Contract
 
 ### Register Output { #register_output }
@@ -31,6 +33,25 @@ Used for the following:
 * [@dp.table](./index.md#table)
 * [@dp.materialized_view](./index.md#materialized_view)
 * [@dp.temporary_view](./index.md#temporary_view)
+
+### Register Auto CDC Flow { #register_auto_cdc_flow }
+
+```py
+register_auto_cdc_flow(
+    self,
+    flow: AutoCdcFlow,
+) -> None
+```
+
+Registers the given [AutoCdcFlow](AutoCdcFlow.md) for [Auto CDC Flows](../auto-cdc/index.md)
+
+See:
+
+* [SparkConnectGraphElementRegistry](SparkConnectGraphElementRegistry.md#register_auto_cdc_flow)
+
+Used for the following:
+
+* [dp.create_auto_cdc_flow](./index.md#create_auto_cdc_flow)
 
 ### Register Flow { #register_flow }
 

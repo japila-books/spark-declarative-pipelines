@@ -41,7 +41,7 @@ The following fields are supported:
 | `database` | The default database to register datasets into<br>Unless specified, [PipelinesHandler](PipelinesHandler.md#createDataflowGraph) falls back to the current database. |
 | `schema` | Alias of `database`. Used unless `database` is defined |
 | `configuration` | SparkSession configs<br>Spark Pipelines runtime uses the configs to build a new `SparkSession` when `run`.<br>[spark.sql.connect.serverStacktrace.enabled]({{ book.spark_connect }}/configuration-properties/#spark.sql.connect.serverStacktrace.enabled) is hardcoded to be always `false`. |
-| `libraries` | `glob`s of `include`s with transformations in [SQL](#sql) and [Python](#python-decorators) |
+| `libraries` | `glob`s of `include`s with transformations in [SQL](sql.md) and [Python](pyspark/index.md) |
 
 ??? info
     Pipeline spec is resolved in `pyspark/pipelines/cli.py::unpack_pipeline_spec`.

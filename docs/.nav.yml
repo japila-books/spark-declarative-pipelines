@@ -1,10 +1,10 @@
 # https://lukasgeiter.github.io/mkdocs-awesome-nav/
 nav:
   - index.md
+  - Auto CDC: auto-cdc
   - Internals:
     - Overview: overview.md
     - configuration-properties.md
-    - AutoCDC: auto-cdc/
     - Logical Operators: logical-operators
     - "*"
   - CLI: cli

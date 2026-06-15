@@ -1,0 +1,3 @@
+# AutoCdcMergeWriteBase
+
+`AutoCdcMergeWriteBase` is...FIXME

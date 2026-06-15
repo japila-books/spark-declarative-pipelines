@@ -198,13 +198,16 @@ defineFlow(
 
 `defineFlow` [creates a flow identifier](GraphIdentifierManager.md#parseTableIdentifier) (for the `flow` name).
 
+In the end, `defineFlow` [registers a flow](GraphRegistrationContext.md#registerFlow):
+
+* [UntypedFlow](UntypedFlow.md) for regular flows (`DetailsCase.RELATION_FLOW_DETAILS`)
+* [AutoCdcFlow](#buildAutoCdcFlow) for [Auto CDC Flow](../auto-cdc/index.md) (`DetailsCase.AUTO_CDC_FLOW_DETAILS`)
+
 ??? warning "AnalysisExceptions"
     `defineFlow` reports an `AnalysisException` for the following:
 
     1. `DefineFlow` proto command defines the flow as a one-time flow
     1. The given `flow` is not an implicit flow, but is defined with a multi-part identifier.
-
-In the end, `defineFlow` [registers a flow](GraphRegistrationContext.md#registerFlow) (with a proper [FlowFunction](FlowAnalysis.md#createFlowFunctionFromLogicalPlan)).
 
 ### Create AutoCdcFlow { #buildAutoCdcFlow }
 

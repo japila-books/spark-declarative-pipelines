@@ -15,6 +15,7 @@ Path for the [most recent checkpoint of this streaming flow execution](FlowSyste
 See:
 
 * [SinkWrite](SinkWrite.md#checkpointPath)
+* [Scd1MergeStreamingWrite](../auto-cdc/Scd1MergeStreamingWrite.md#checkpointPath)
 * [StreamingTableWrite](StreamingTableWrite.md#checkpointPath)
 
 Used when:
@@ -41,21 +42,7 @@ startStream(): StreamingQuery
 See:
 
 * [SinkWrite](SinkWrite.md#startStream)
-* [StreamingTableWrite](StreamingTableWrite.md#startStream)
-
-Used when:
-
-* `StreamingFlowExecution` is requested to [executeInternal](#executeInternal)
-
-### Start Streaming Query { #startStream }
-
-```scala
-startStream(): StreamingQuery
-```
-
-See:
-
-* [SinkWrite](SinkWrite.md#startStream)
+* [Scd1MergeStreamingWrite](../auto-cdc/Scd1MergeStreamingWrite.md#startStream)
 * [StreamingTableWrite](StreamingTableWrite.md#startStream)
 
 Used when:

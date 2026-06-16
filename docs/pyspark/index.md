@@ -1,5 +1,5 @@
 ---
-title: Python
+title: PySpark
 ---
 
 # SDP Python API
@@ -48,7 +48,7 @@ append_flow(
 
 1. `QueryFunction = Callable[[], DataFrame]` is a Python function that takes no arguments and returns a PySpark `DataFrame`.
 
-[Registers](GraphElementRegistry.md#register_flow) an append [Flow](Flow.md) (in the active [GraphElementRegistry](GraphElementRegistry.md))
+[Registers an append Flow](GraphElementRegistry.md#register_flow) with the active [GraphElementRegistry](GraphElementRegistry.md)
 
 `target` is the name of the dataset (_destination_) this flow writes to.
 
@@ -68,7 +68,7 @@ create_auto_cdc_flow(
 ) -> None
 ```
 
-[Registers an AutoCdcFlow](GraphElementRegistry.md#register_auto_cdc_flow) in the active [GraphElementRegistry](GraphElementRegistry.md).
+[Registers an AutoCdcFlow](GraphElementRegistry.md#register_auto_cdc_flow) with the active [GraphElementRegistry](GraphElementRegistry.md).
 
 ??? warning "Not Python Decorator"
     Unlike the others, `create_auto_cdc_flow` is not a [Python decorator](https://peps.python.org/pep-0318/) (`Callable`).
@@ -103,7 +103,7 @@ create_streaming_table(
 ) -> None
 ```
 
-[Registers](GraphElementRegistry.md#register_output) a `StreamingTable` dataset (in the active [GraphElementRegistry](GraphElementRegistry.md)) for [Append Flows](#append-flows).
+[Registers](GraphElementRegistry.md#register_output) a `StreamingTable` dataset (with the active [GraphElementRegistry](GraphElementRegistry.md)) for [Append Flows](#append-flows).
 
 ??? warning "Not Python Decorator"
     Unlike the others, `create_streaming_table` is not a [Python decorator](https://peps.python.org/pep-0318/) (`Callable`).
@@ -125,7 +125,7 @@ materialized_view(
 ) -> Union[Callable[[QueryFunction], None], None]
 ```
 
-[Registers](GraphElementRegistry.md#register_output) a [MaterializedView](MaterializedView.md) dataset with an accompanying [Flow](GraphElementRegistry.md#register_flow) in the active [GraphElementRegistry](GraphElementRegistry.md).
+[Registers](GraphElementRegistry.md#register_output) a [MaterializedView](MaterializedView.md) dataset with an accompanying [Flow](GraphElementRegistry.md#register_flow) with the active [GraphElementRegistry](GraphElementRegistry.md).
 
 ## @dp.table { #table }
 

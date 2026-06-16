@@ -16,10 +16,10 @@ Spark Declarative Pipelines comes with [spark-pipelines](#spark-pipelines) shell
 
 Internally, `spark-pipelines` prepares the runtime environment to run [SparkPipelines](SparkPipelines.md) standalone application (with the path to [pyspark/pipelines/cli.py](cli.md) Python script).
 
-`cli.py` does two very critical steps in a SDP project's execution:
+`cli.py` does two very important steps with regards to the transformation scripts in a SDP project's execution:
 
-1. As a Python script, the `cli.py` imports all the Python transformation scripts written by a SDP developer (that are immediately executed per [Python import system](https://docs.python.org/3/reference/import.html)'s rules).
-1. SQL libraries remain untouched and sent over the wire to a Spark Connect server ([PipelinesHandler](../spark-connect//PipelinesHandler.md)) for execution.
+1. As a Python script, the `cli.py` imports all the transformation scripts written in [Python](../pyspark/index.md) by a SDP developer (that are immediately executed per [Python import system](https://docs.python.org/3/reference/import.html)'s rules).
+2. SQL libraries remain untouched and sent over the wire to a Spark Connect server ([PipelinesHandler](../spark-connect//PipelinesHandler.md)) for execution.
 
 ## spark-pipelines Shell Script { #spark-pipelines }
 

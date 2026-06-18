@@ -30,7 +30,9 @@ The Pipelines CLI supports the following commands:
 * [run](#run)
 
 ```console
-❯ uvx --with "pyspark[pipelines]" spark-pipelines --help
+$ uvx --with "pyspark[pipelines]==4.2.0.dev5" \
+    --prerelease=allow \
+    spark-pipelines --help
 usage: cli.py [-h] {run,dry-run,init} ...
 
 Pipelines CLI
@@ -133,7 +135,7 @@ Creating dataflow graph...
 `run` sends a `CreateDataflowGraph` command for execution in the Spark Connect server.
 
 !!! note "Spark Connect Server and Command Execution"
-    `CreateDataflowGraph` is handled by [PipelinesHandler](../spark-connect/PipelinesHandler.md#createDataflowGraph) on the Spark Connect Server.
+    `CreateDataflowGraph` is handled by [PipelinesHandler](../spark-connect/PipelinesHandler.md#CREATE_DATAFLOW_GRAPH) on the Spark Connect Server.
 
 `run` prints out the following log message:
 

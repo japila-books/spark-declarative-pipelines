@@ -20,14 +20,14 @@ This demo will teach you how to do the following:
 Create a sample SDP project using [spark-pipelines CLI](../cli/index.md).
 
 ```shell
-uvx --with "pyspark[pipelines]==4.1.1" spark-pipelines init --name sdp-delta
+uvx --with "pyspark[pipelines]==4.3.0" spark-pipelines init --name sdp-delta
 ```
 
 Switch to `sdp-delta` directory and execute `dry-run`.
 
 ```shell
 cd sdp-delta && \
-uvx --with "pyspark[pipelines]==4.1.1" spark-pipelines dry-run
+uvx --with "pyspark[pipelines]==4.3.0" spark-pipelines dry-run
 ```
 
 You should see some logs similar to the following:
@@ -73,7 +73,7 @@ configuration:
 
 ## Start Spark Connect Server
 
-Download and install [Apache Spark 4.1.1](https://spark.apache.org/downloads.html).
+Download and install [Apache Spark 4.3.0](https://spark.apache.org/downloads.html).
 
 Open another terminal and go to the installation directory of Apache Spark.
 
@@ -119,7 +119,7 @@ def rates() -> DataFrame:
 ## Run Project
 
 ```shell
-uvx --with "pyspark[pipelines]==4.1.1" spark-pipelines run
+uvx --with "pyspark[pipelines]==4.3.0" spark-pipelines run
 ```
 
 You should see some logs similar to the following:
@@ -145,7 +145,7 @@ You should see some logs similar to the following:
 In yet another terminal, run a [PySpark Connect]({{ book.spark_connect }}/pyspark/) client.
 
 ```shell
-uvx --with "pyspark[pipelines]==4.1.1" pyspark --remote sc://localhost:15002
+uvx --with "pyspark[pipelines]==4.3.0" pyspark --remote sc://localhost:15002
 ```
 
 Show all the available tables. There should be our `rates` table.

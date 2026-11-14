@@ -21,7 +21,7 @@ This checklist should help you start from scratch (and avoid any surprises durin
 Create a new pipelines project using [Spark Pipelines CLI](../cli/index.md).
 
 ```shell
-uvx --from "pyspark[pipelines]==4.1.1" spark-pipelines init --name sdp-unity-catalog
+uvx --from "pyspark[pipelines]==4.3.0" spark-pipelines init --name sdp-unity-catalog
 ```
 
 This command should create `sdp-unity-catalog` directory.
@@ -34,7 +34,7 @@ cd sdp-unity-catalog
 Execute [dry-run](../cli/index.md#dry-run) command.
 
 ```shell
-uvx --from "pyspark[pipelines]==4.1.1" spark-pipelines dry-run
+uvx --from "pyspark[pipelines]==4.3.0" spark-pipelines dry-run
 ```
 
 You should see some logs similar to the following:
@@ -185,7 +185,7 @@ You should have two catalogs now.
 
 Open another terminal.
 
-Download and install [Apache Spark 4.1.1](https://spark.apache.org/downloads.html).
+Download and install [Apache Spark 4.3.0](https://spark.apache.org/downloads.html).
 
 Go to the installation directory of your local Apache Spark.
 
@@ -217,7 +217,7 @@ Start a Spark Connect server with Delta Lake and Unity Catalog set up.
 Go back to the terminal with the pipelines project open.
 
 ```shell
-uvx --from "pyspark[pipelines]==4.1.1" spark-pipelines run
+uvx --from "pyspark[pipelines]==4.3.0" spark-pipelines run
 ```
 
 This command will fail with the following exception:
@@ -282,7 +282,7 @@ def rates() -> DataFrame:
 ## Run Pipelines Project
 
 ```shell
-uvx --from "pyspark[pipelines]==4.1.1" spark-pipelines run
+uvx --from "pyspark[pipelines]==4.3.0" spark-pipelines run
 ```
 
 You should see some logs similar to the following:
@@ -386,7 +386,7 @@ Go to the directory of your local Unity Catalog installation.
 In yet another terminal, run a [PySpark Connect]({{ book.spark_connect }}/pyspark/) client.
 
 ```shell
-uvx --from "pyspark[pipelines]==4.1.1" pyspark --remote sc://localhost:15002
+uvx --from "pyspark[pipelines]==4.3.0" pyspark --remote sc://localhost:15002
 ```
 
 Show all the available tables.

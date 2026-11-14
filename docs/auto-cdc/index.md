@@ -2,13 +2,14 @@
 
 [dp.create_auto_cdc_flow](../pyspark/index.md#create_auto_cdc_flow) is used in PySpark to create an Auto CDC flow into the target table from the Change Data Capture (CDC) source.
 
-Target table must have already been created using the [dp.create_streaming_table](../pyspark/index.md#create_streaming_table) function.
+??? note "Target Streaming Table"
+    Target table must have already been created using the [dp.create_streaming_table](../pyspark/index.md#create_streaming_table) function.
 
 Auto CDC flows are represented as [AutoCdcFlow](./AutoCdcFlow.md)s.
 
 `AutoCdcFlow` is resolved to [AutoCdcMergeFlow](AutoCdcMergeFlow.md) (when `FlowResolver` is requested to [resolve a flow](../spark-connect/FlowResolver.md#resolveFlow)).
 
-`AutoCdcMergeFlow` applies a CDC event stream to a target table via MERGE.
+`AutoCdcMergeFlow` applies a CDC event stream to a target table using MERGE operation.
 
 `AutoCdcMergeFlow` can be one of the two [SCD Type](ChangeArgs.md#storedAsScdType)s (based on [ChangeArgs](#changeArgs)):
 

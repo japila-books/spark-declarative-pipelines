@@ -36,6 +36,19 @@ In the end, `materializeDatasets` [materializeViews](#materializeViews).
 
 * `PipelineExecution` is requested to [initialize the dataflow graph](PipelineExecution.md#initializeGraph)
 
+### Materialize Auxiliary Table { #materializeAuxiliaryTable }
+
+```scala
+materializeAuxiliaryTable(
+  auxiliaryTableSpec: AuxiliaryTableSpec,
+  isFullRefresh: Boolean,
+  existingAuxiliaryTable: Option[V2Table],
+  caseSensitive: Boolean,
+  context: PipelineUpdateContext): Unit
+```
+
+`materializeAuxiliaryTable`...FIXME
+
 ### Materialize Table { #materializeTable }
 
 ```scala

@@ -5,7 +5,7 @@ Spark Declarative Pipelines comes with [spark-pipelines](#spark-pipelines) shell
 === "uv"
 
     ```shell
-    uvx --with "pyspark[pipelines]==4.1.1" spark-pipelines
+    uvx --with "pyspark[pipelines]==4.3.0" spark-pipelines
     ```
 
 === "Local installation"
@@ -30,7 +30,7 @@ The Pipelines CLI supports the following commands:
 * [run](#run)
 
 ```console
-$ uvx --with "pyspark[pipelines]==4.2.0.dev5" \
+$ uvx --with "pyspark[pipelines]==4.3.0" \
     --prerelease=allow \
     spark-pipelines --help
 usage: cli.py [-h] {run,dry-run,init} ...

@@ -18,7 +18,7 @@ This somewhat convoluted way of executing [pyspark/pipelines/cli.py](cli.md) Pyt
 === "uv"
 
     ```text
-    uvx --from "pyspark[pipelines]==4.1.1" \
+    uvx --from "pyspark[pipelines]==4.3.0" \
         spark-submit \
             [sparkSubmitArgs] \
             /absolute/path/to/pyspark/pipelines/cli.py \

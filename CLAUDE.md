@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## About This Repository
 
-This is "The Internals of Spark Declarative Pipelines" — an online reference book by Jacek Laskowski documenting the internal architecture of Apache Spark Declarative Pipelines (SDP) in Spark 4.1.1. It is a **documentation-only** project (no application code).
+This is "The Internals of Spark Declarative Pipelines" — an online reference book by Jacek Laskowski documenting the internal architecture of Apache Spark Declarative Pipelines (SDP) in Spark 4.3.0. It is a **documentation-only** project (no application code).
 
 Published at: https://books.japila.pl/spark-declarative-pipelines
 
@@ -41,4 +41,4 @@ Architecture diagrams are maintained as OmniGraffle sources in `graffles/` and e
 - Each component doc covers: the class/object being described, its role in the system, key methods, and cross-links to related components
 - Code examples use MkDocs content tabs (`=== "Python"` / `=== "Scala"` / `=== "SQL"`) for multi-language samples
 - Use admonition blocks (`!!! note`, `!!! tip`, etc.) for callouts
-- Spark source references link to the Spark GitHub at tag `v4.1.1`
+- Spark source references link to the Spark GitHub at tag `v4.3.0`

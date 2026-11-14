@@ -15,17 +15,17 @@ Published at: https://books.japila.pl/spark-declarative-pipelines
 pip install -r requirements.txt
 
 # Local development server (live reload)
-mkdocs serve
+zensical serve
 
-# Deploy to GitHub Pages
-mkdocs gh-deploy --force
+# Build the site into site/
+zensical build --clean
 ```
 
-Deployment also happens automatically via GitHub Actions on every push to `main`.
+Deployment also happens automatically via GitHub Actions (build with Zensical, publish to the `gh-pages` branch) on every push to `main`.
 
 ## Architecture
 
-The documentation is built with **MkDocs + Material theme**. Key configuration is in `mkdocs.yml`. Navigation is managed by the `mkdocs-awesome-nav` plugin via `docs/.nav.yml` — edit that file to add or reorder pages.
+The documentation is built with **Zensical** (it reads `mkdocs.yml` and supports the MkDocs Material plugins and extensions used here). Key configuration is in `mkdocs.yml`. Navigation is managed by the `mkdocs-awesome-nav` plugin via `docs/.nav.yml` — edit that file to add or reorder pages.
 
 All content lives under `docs/`. The structure:
 

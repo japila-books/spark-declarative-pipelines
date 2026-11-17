@@ -1,6 +1,6 @@
 # DataflowGraph
 
-`DataflowGraph` is a [GraphRegistrationContext](GraphRegistrationContext.md) with [tables](#tables), [sinks](#sinks), [views](#views) and [flows](#flows) fully-qualified, resolved and de-duplicated.
+`DataflowGraph` is a graph of [tables](#tables), [sinks](#sinks), [views](#views) and [flows](#flows).
 
 ## Creating Instance
 
@@ -14,7 +14,7 @@
 `DataflowGraph` is created when:
 
 * `DataflowGraph` is requested to [reanalyzeFlow](#reanalyzeFlow)
-* `GraphRegistrationContext` is requested to [convert to a DataflowGraph](GraphRegistrationContext.md#toDataflowGraph)
+* `GraphRegistrationContext` is requested to [build a DataflowGraph](GraphRegistrationContext.md#toDataflowGraph)
 
 ## Outputs { #output }
 

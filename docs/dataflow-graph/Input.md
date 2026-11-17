@@ -26,4 +26,4 @@ Used when:
 ## Implementations
 
 * [ResolvedFlow](ResolvedFlow.md)
-* [TableInput](TableInput.md)
+* [VirtualTableInput](VirtualTableInput.md)

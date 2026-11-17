@@ -2,6 +2,7 @@
 nav:
   - index.md
   - Auto CDC: auto-cdc
+  - Dataflow Graph: dataflow-graph
   - Internals:
     - Overview: overview.md
     - configuration-properties.md

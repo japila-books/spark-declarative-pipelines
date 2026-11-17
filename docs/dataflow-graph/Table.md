@@ -1,6 +1,6 @@
 # Table
 
-`Table` is a [TableInput](TableInput.md) and a [Dataset](Dataset.md) output.
+`Table` is a [TableElement](TableElement.md) and [Dataset](Dataset.md) output.
 
 ## Creating Instance
 
@@ -19,22 +19,25 @@
 
 `Table` is created when:
 
-* `PipelinesHandler` is requested to [define an Output](PipelinesHandler.md#defineOutput)
-* `SqlGraphRegistrationContext` is requested to handle [CreateMaterializedViewAsSelect](SqlGraphRegistrationContext.md#CreateMaterializedViewAsSelect), [CreateStreamingTableAsSelect](SqlGraphRegistrationContext.md#CreateStreamingTableAsSelect), [CreateStreamingTable](SqlGraphRegistrationContext.md#CreateStreamingTable) logical commands
+* `PipelinesHandler` is requested to [define an Output](../spark-connect/PipelinesHandler.md#defineOutput)
+* `SqlGraphRegistrationContext` is requested to handle [CreateMaterializedViewAsSelect](../spark-connect/SqlGraphRegistrationContext.md#CreateMaterializedViewAsSelect), [CreateStreamingTableAsSelect](../spark-connect/SqlGraphRegistrationContext.md#CreateStreamingTableAsSelect), [CreateStreamingTable](../spark-connect/SqlGraphRegistrationContext.md#CreateStreamingTable), [CreateStreamingTableAutoCdc](../spark-connect/SqlGraphRegistrationContext.md#CreateStreamingTableAutoCdc) logical commands
 
-## Load Data { #load }
+## Storage Location { #path }
 
-??? note "Input"
+??? note "Dataset"
 
     ```scala
-    load(
-      readOptions: InputReadOptions): DataFrame
+    path: String
     ```
 
-    `load` is part of the [Input](Input.md#load) abstraction.
+    `path` is part of the [Dataset](Dataset.md#path) abstraction.
 
-`load` is a "shortcut" to create a batch or a streaming `DataFrame` (based on the type of the given [InputReadOptions](InputReadOptions.md)).
+`path`...FIXME
 
-For [StreamingReadOptions](InputReadOptions.md#StreamingReadOptions), `load` creates a `DataStreamReader` ([Spark Structured Streaming]({{ book.structured_streaming }}/DataStreamReader/)) to load a table (using `DataStreamReader.table` operator) with the given `StreamingReadOptions`.
+## DatasetType { #datasetType }
 
-For [BatchReadOptions](InputReadOptions.md#BatchReadOptions), `load` creates a [DataFrameReader](../DataFrameReader.md) to load a table (using `DataFrameReader.table` operator).
+```scala
+datasetType: DatasetType
+```
+
+`datasetType` is `STREAMING_TABLE` for [isStreamingTable](#isStreamingTable). Otherwise, `datasetType` is `MATERIALIZED_VIEW`.

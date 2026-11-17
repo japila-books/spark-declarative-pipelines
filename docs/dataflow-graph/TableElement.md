@@ -1,6 +1,6 @@
 # TableElement
 
-`TableElement` is an (marker???) [extension](#contract) of the [GraphElement](GraphElement.md) abstraction for [graph elements backed by a table](#implementations) (with the [specifiedSchema](#specifiedSchema)).
+`TableElement` is an [extension](#contract) of the [GraphElement](GraphElement.md) abstraction for [graph elements backed by a table](#implementations) (with an optional [user-specified schema](#specifiedSchema)).
 
 ## Contract
 
@@ -12,9 +12,9 @@ specifiedSchema: Option[StructType]
 
 Used when:
 
-* `CoreDataflowNodeProcessor` is requested to [process a Table node](../spark-connect/CoreDataflowNodeProcessor.md#processNode)
+* `CoreDataflowNodeProcessor` is requested to [process a table node](../spark-connect/CoreDataflowNodeProcessor.md#processNode)
 * `DatasetManager` is requested to [materialize a table](../spark-connect/DatasetManager.md#materializeTable)
-* `VirtualTableInput` is requested to [load](VirtualTableInput.md#load)
+* `VirtualTableInput` is requested to [load data](VirtualTableInput.md#load)
 * `GraphValidations` is requested to [validateUserSpecifiedSchemas](../spark-connect/GraphValidations.md#validateUserSpecifiedSchemas)
 
 ## Implementations

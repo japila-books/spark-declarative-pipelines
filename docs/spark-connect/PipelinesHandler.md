@@ -28,7 +28,7 @@ handlePipelinesCommand(
 | `DROP_DATAFLOW_GRAPH` | [Drops a pipeline](#DROP_DATAFLOW_GRAPH) ||
 | `DEFINE_OUTPUT` | [Defines an output](#DEFINE_OUTPUT) (a table, a materialized view, a temporary view or a sink) | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_output) |
 | `DEFINE_FLOW` | [Defines a flow](#DEFINE_FLOW) | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_flow) |
-| `START_RUN` | [Runs a pipeline update](#START_RUN) | [pyspark.pipelines.spark_connect_pipeline](spark_connect_pipeline.md#start_run) |
+| `START_RUN` | [Runs a pipeline update](#START_RUN) | [pyspark.pipelines.spark_connect_pipeline](../pyspark/spark_connect_pipeline.md#start_run) |
 | `DEFINE_SQL_GRAPH_ELEMENTS` | [DEFINE_SQL_GRAPH_ELEMENTS](#DEFINE_SQL_GRAPH_ELEMENTS) | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_sql) |
 
 ??? warning "UnsupportedOperationException"
@@ -224,3 +224,16 @@ buildAutoCdcFlow(
 ```
 
 `buildAutoCdcFlow` creates a [AutoCdcFlow](../auto-cdc/AutoCdcFlow.md).
+
+## Logging
+
+Enable `ALL` logging level for `org.apache.spark.sql.connect.pipelines.PipelinesHandler` logger to see what happens inside.
+
+Add the following line to `conf/log4j2.properties`:
+
+```text
+logger.PipelinesHandler.name = org.apache.spark.sql.connect.pipelines.PipelinesHandler
+logger.PipelinesHandler.level = all
+```
+
+Refer to [Logging](../spark-logging.md).

@@ -24,7 +24,7 @@ Eventually, `GraphRegistrationContext` [becomes a DataflowGraph](#toDataflowGrap
 toDataflowGraph: DataflowGraph
 ```
 
-`toDataflowGraph` creates a new [DataflowGraph](DataflowGraph.md) with the [tables](#tables), [views](#views), [sinks](#sinks) and [flows](#flows) fully-qualified, resolved, and de-duplicated.
+`toDataflowGraph` creates a new [DataflowGraph](../dataflow-graph/DataflowGraph.md) with the [tables](#tables), [views](#views), [sinks](#sinks) and [flows](#flows) fully-qualified, resolved, and de-duplicated.
 
 ??? note "AnalysisException"
     `toDataflowGraph` reports an `AnalysisException` when this `GraphRegistrationContext` is [empty](#isPipelineEmpty).
@@ -33,7 +33,7 @@ toDataflowGraph: DataflowGraph
 
 `toDataflowGraph` is used when:
 
-* `PipelinesHandler` is requested to [start a pipeline run](PipelinesHandler.md#startRun)
+* `PipelinesHandler` is requested to [run a pipeline update](PipelinesHandler.md#startRun)
 
 ### isPipelineEmpty { #isPipelineEmpty }
 

@@ -12,7 +12,7 @@ This demo shows how to work with a development (unreleased) version of Spark Dec
     For released versions of Spark Declarative Pipelines, use `uvx` instead:
 
     ```shell
-    uvx --with "pyspark[pipelines]" spark-pipelines
+    uvx --with "pyspark[pipelines]=={{ spark.version }}" spark-pipelines
     ```
 
 It is assumed that `SPARK_HOME` environment variable points at the sources of Apache Spark.
@@ -39,13 +39,13 @@ uv tree --depth 2
 
     ```text
     hello-spark-pipelines v0.1.0
-    └── pyspark-client v4.2.0.dev0
-        ├── googleapis-common-protos v1.72.0
-        ├── grpcio v1.76.0
-        ├── grpcio-status v1.76.0
-        ├── numpy v2.4.2
-        ├── pandas v3.0.0
-        ├── pyarrow v23.0.0
+    └── pyspark-client v4.3.0
+        ├── googleapis-common-protos v1.76.0
+        ├── grpcio v1.85.3
+        ├── grpcio-status v1.85.3
+        ├── numpy v2.5.5
+        ├── pandas v3.1.1
+        ├── pyarrow v26.0.1
         ├── pyyaml v6.0.3
         └── zstandard v0.25.0
     ```
@@ -57,20 +57,21 @@ uv pip list
 === "Output"
 
     ```text
-    Package                  Version     Editable project location
-    ------------------------ ----------- ----------------------------------------------
-    googleapis-common-protos 1.72.0
-    grpcio                   1.76.0
-    grpcio-status            1.76.0
-    numpy                    2.4.2
-    pandas                   3.0.0
-    protobuf                 6.33.5
-    pyarrow                  23.0.0
-    pyspark-client           4.2.0.dev0  /Users/jacek/oss/spark/python/packaging/client
-    python-dateutil          2.9.0.post0
+    Package                  Version Editable project location
+    ------------------------ ------- ----------------------------------------------
+    googleapis-common-protos 1.76.0
+    grpcio                   1.85.3
+    grpcio-status            1.85.3
+    hello-spark-pipelines    0.1.0   /Users/jacek/demo/hello-spark-pipelines
+    numpy                    2.5.5
+    pandas                   3.1.1
+    protobuf                 7.36.2
+    pyarrow                  26.0.1
+    pyspark-client           4.3.0   /Users/jacek/oss/spark/python/packaging/client
+    python-dateutil          4.0.0
     pyyaml                   6.0.3
-    six                      1.17.0
-    typing-extensions        4.15.0
+    typing-extensions        4.16.0
+    tzdata                   2026.6
     zstandard                0.25.0
     ```
 

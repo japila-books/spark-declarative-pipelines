@@ -48,7 +48,7 @@ start_run(
 
 `start_run` is used when:
 
-* FIXME
+* `pyspark/pipelines/cli.py` is requested to [run a pipeline update](../cli/cli.md#run)
 
 ## handle_pipeline_events { #handle_pipeline_events }
 

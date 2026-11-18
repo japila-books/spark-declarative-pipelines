@@ -14,7 +14,7 @@
 `DataflowGraph` is created when:
 
 * `DataflowGraph` is requested to [reanalyzeFlow](#reanalyzeFlow)
-* `GraphRegistrationContext` is requested to [build a DataflowGraph](GraphRegistrationContext.md#toDataflowGraph)
+* `GraphRegistrationContext` is requested to [build a DataflowGraph](../spark-connect/GraphRegistrationContext.md#toDataflowGraph)
 
 ## Outputs { #output }
 

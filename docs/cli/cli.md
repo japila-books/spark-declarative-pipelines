@@ -21,7 +21,7 @@ main() -> None
 
 * `SparkPipelines` is [launched as a standalone application](SparkPipelines.md#main) (with the first argument being the path to this `pyspark/pipelines/cli.py` module)
 
-## Run Pipeline { #run }
+## Run Pipeline Update { #run }
 
 ```py
 run(

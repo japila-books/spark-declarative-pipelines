@@ -158,4 +158,4 @@ temporary_view(
 ) -> Union[Callable[[QueryFunction], None], None]
 ```
 
-[Registers](GraphElementRegistry.md#register_output) a `TemporaryView` dataset with an accompanying [Flow](GraphElementRegistry.md#register_flow) in the active [GraphElementRegistry](GraphElementRegistry.md).
+[Registers](GraphElementRegistry.md#register_output) a [TemporaryView](TemporaryView.md) output with an accompanying [Flow](GraphElementRegistry.md#register_flow) in the active [GraphElementRegistry](GraphElementRegistry.md).

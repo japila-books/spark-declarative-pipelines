@@ -1,11 +1,13 @@
 # GraphElementRegistry
 
-`GraphElementRegistry` is an [abstraction](#contract) of [graph element registries](#implementations):
+`GraphElementRegistry` is an [abstraction](#contract) of [registries](#implementations) of the following graph elements:
 
-* [Output](#register_output)s
+* [AutoCdcFlow](#register_auto_cdc_flow)s
 * [Flow](#register_flow)s
+* [Output](#register_output)s
+* [SQL statements](#register_sql)
 
-Graph elements can be defined in Python and [SQL](#register_sql).
+Graph elements can be defined in [Python](index.md) and [SQL](#register_sql).
 
 `GraphElementRegistry` is a Python abstract class defined in `pyspark/pipelines/graph_element_registry.py`.
 

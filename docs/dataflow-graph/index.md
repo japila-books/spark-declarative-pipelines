@@ -1,12 +1,26 @@
 # Dataflow Graph
 
-**Dataflow Graph** ([DataflowGraph](DataflowGraph.md)) is a graph of tables, sinks, views and flows in a Spark Declarative Pipelines project.
+**Dataflow Graph** ([DataflowGraph](DataflowGraph.md)) is a graph of tables, sinks, views, and flows in a Spark Declarative Pipelines project.
 
-A Dataflow Graph is created every time [Spark Pipelines CLI](../cli/index.md) (`spark-pipelines`) is launched to [run a pipeline update](../cli/cli.md#run) (with either `run` or `dry-run` option).
+A Dataflow Graph is created every time the [Spark Pipelines CLI](../cli/index.md) (`spark-pipelines`) [runs a pipeline update](../cli/cli.md#run), whether with the `run` or the `dry-run` option.
 
-Spark Pipelines CLI uses Spark Connect to talk to [PipelinesHandler](../spark-connect/PipelinesHandler.md) to [run a pipeline update](../spark-connect/PipelinesHandler.md#startRun).
+The CLI uses Spark Connect to talk to [PipelinesHandler](../spark-connect/PipelinesHandler.md), which [runs the pipeline update](../spark-connect/PipelinesHandler.md#startRun).
 
-`PipelinesHandler` prints out the following INFO message to the logs:
+```mermaid
+sequenceDiagram
+    participant CLI as spark-pipelines (CLI)
+    participant PH as PipelinesHandler
+    participant GRC as GraphRegistrationContext
+    participant DG as DataflowGraph
+
+    CLI->>PH: start_run (Spark Connect)
+    PH->>GRC: register GraphElements
+    GRC->>DG: toDataflowGraph
+    DG-->>PH: DataflowGraph
+    PH-->>CLI: pipeline update events
+```
+
+`PipelinesHandler` logs the following INFO message:
 
 ```text
 PipelinesHandler: Start pipeline cmd received: start_run {
@@ -17,4 +31,4 @@ PipelinesHandler: Start pipeline cmd received: start_run {
 }
 ```
 
-`PipelinesHandler` uses [GraphRegistrationContext](../spark-connect/GraphRegistrationContext.md) to register [GraphElement](GraphElement.md)s and, eventually, [build a DataflowGraph](../spark-connect/GraphRegistrationContext.md#toDataflowGraph).
+`PipelinesHandler` uses [GraphRegistrationContext](../spark-connect/GraphRegistrationContext.md) to register [GraphElement](GraphElement.md)s and, finally, to [build the DataflowGraph](../spark-connect/GraphRegistrationContext.md#toDataflowGraph).

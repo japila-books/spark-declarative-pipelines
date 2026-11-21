@@ -2,7 +2,7 @@
 
 **Dataflow Graph** ([DataflowGraph](DataflowGraph.md)) is a graph of tables, sinks, views, and flows in a Spark Declarative Pipelines project.
 
-A Dataflow Graph is created every time the [Spark Pipelines CLI](../cli/index.md) (`spark-pipelines`) [runs a pipeline update](../cli/cli.md#run), whether with the `run` or the `dry-run` option.
+A Dataflow Graph is created every time the [Spark Pipelines CLI](../cli/index.md) (`spark-pipelines`) [runs a pipeline update](../cli/cli.md#run), whether with the [run](../cli/index.md#run) or the [dry-run](../cli/index.md#dry-run) command.
 
 The CLI uses Spark Connect to talk to [PipelinesHandler](../spark-connect/PipelinesHandler.md), which [runs the pipeline update](../spark-connect/PipelinesHandler.md#startRun).
 

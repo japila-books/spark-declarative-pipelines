@@ -17,19 +17,20 @@ handlePipelinesCommand(
   sessionHolder: SessionHolder,
   cmd: proto.PipelineCommand,
   responseObserver: StreamObserver[ExecutePlanResponse],
-  transformRelationFunc: Relation => LogicalPlan): PipelineCommandResult
+  transformRelationFunc: Relation => LogicalPlan,
+  transformExpressionFunc: proto.Expression => Expression): PipelineCommandResult
 ```
 
 `handlePipelinesCommand` handles the given pipeline `cmd` command.
 
-| PipelineCommand | Description | Initiator |
-|-----------------|-------------|-----------|
-| `CREATE_DATAFLOW_GRAPH` | [Creates a new dataflow graph](#CREATE_DATAFLOW_GRAPH) | [pyspark.pipelines.spark_connect_pipeline](spark_connect_pipeline.md#create_dataflow_graph) |
-| `DROP_DATAFLOW_GRAPH` | [Drops a pipeline](#DROP_DATAFLOW_GRAPH) ||
-| `DEFINE_OUTPUT` | [Defines an output](#DEFINE_OUTPUT) (a table, a materialized view, a temporary view or a sink) | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_output) |
-| `DEFINE_FLOW` | [Defines a flow](#DEFINE_FLOW) | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_flow) |
-| `START_RUN` | [Runs a pipeline update](#START_RUN) | [pyspark.pipelines.spark_connect_pipeline](../pyspark/spark_connect_pipeline.md#start_run) |
-| `DEFINE_SQL_GRAPH_ELEMENTS` | [DEFINE_SQL_GRAPH_ELEMENTS](#DEFINE_SQL_GRAPH_ELEMENTS) | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_sql) |
+| PipelineCommand             | Description                                                                                    | Initiator                                                                                              |
+| --------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `CREATE_DATAFLOW_GRAPH`     | [Creates a new dataflow graph](#CREATE_DATAFLOW_GRAPH)                                         | [pyspark.pipelines.spark_connect_pipeline](../pyspark/spark_connect_pipeline.md#create_dataflow_graph) |
+| `DROP_DATAFLOW_GRAPH`       | [Drops a pipeline](#DROP_DATAFLOW_GRAPH)                                                       |                                                                                                        |
+| `DEFINE_OUTPUT`             | [Defines an output](#DEFINE_OUTPUT) (a table, a materialized view, a temporary view or a sink) | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_output)     |
+| `DEFINE_FLOW`               | [Defines a flow](#DEFINE_FLOW)                                                                 | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_flow)       |
+| `START_RUN`                 | [Runs a pipeline update](#START_RUN)                                                           | [pyspark.pipelines.spark_connect_pipeline](../pyspark/spark_connect_pipeline.md#start_run)             |
+| `DEFINE_SQL_GRAPH_ELEMENTS` | [Defines graph elements from SQL statements](#DEFINE_SQL_GRAPH_ELEMENTS)                                        | [SparkConnectGraphElementRegistry](../pyspark/SparkConnectGraphElementRegistry.md#register_sql)        |
 
 ??? warning "UnsupportedOperationException"
     `handlePipelinesCommand` reports an `UnsupportedOperationException` for incorrect commands:
@@ -54,7 +55,7 @@ handlePipelinesCommand(
 
 ### <span id="DefineOutput"> DEFINE_OUTPUT { #DEFINE_OUTPUT }
 
-[handlePipelinesCommand](#handlePipelinesCommand) prints out the following INFO message to the logs:
+[handlePipelinesCommand](#handlePipelinesCommand) logs the following INFO message:
 
 ```text
 Define pipelines output cmd received: [cmd]
@@ -64,7 +65,7 @@ Define pipelines output cmd received: [cmd]
 
 ### <span id="DefineFlow"> DEFINE_FLOW { #DEFINE_FLOW }
 
-[handlePipelinesCommand](#handlePipelinesCommand) prints out the following INFO message to the logs:
+[handlePipelinesCommand](#handlePipelinesCommand) logs the following INFO message:
 
 ```text
 Define pipelines flow cmd received: [cmd]
@@ -74,7 +75,7 @@ Define pipelines flow cmd received: [cmd]
 
 ### <span id="StartRun"> START_RUN { #START_RUN }
 
-[handlePipelinesCommand](#handlePipelinesCommand) prints out the following INFO message to the logs:
+[handlePipelinesCommand](#handlePipelinesCommand) logs the following INFO message:
 
 ```text
 Start pipeline cmd received: [cmd]
@@ -84,7 +85,13 @@ Start pipeline cmd received: [cmd]
 
 ### DEFINE_SQL_GRAPH_ELEMENTS { #DEFINE_SQL_GRAPH_ELEMENTS }
 
-[handlePipelinesCommand](#handlePipelinesCommand)...FIXME
+[handlePipelinesCommand](#handlePipelinesCommand) logs the following INFO message:
+
+```text
+Register sql datasets cmd received: [cmd]
+```
+
+`handlePipelinesCommand` [defines pipeline graph elements from SQL definitions](#defineSqlGraphElements).
 
 ## Run Pipeline Update { #startRun }
 
@@ -117,13 +124,13 @@ createDataflowGraph(
 ??? note "CREATE_DATAFLOW_GRAPH Pipeline Command"
     `createDataflowGraph` is used to handle [CREATE_DATAFLOW_GRAPH](#CREATE_DATAFLOW_GRAPH) pipeline command.
 
-`createDataflowGraph` gets the catalog (from the given `CreateDataflowGraph` if defined in the [pipeline specification file](index.md#pipeline-specification-file)) or prints out the following INFO message to the logs and uses the current catalog instead.
+`createDataflowGraph` gets the catalog (from the given `CreateDataflowGraph` if defined in the [pipeline specification file](index.md#pipeline-specification-file)) or logs the following INFO message and uses the current catalog instead.
 
 ```text
 No default catalog was supplied. Falling back to the current catalog: [currentCatalog].
 ```
 
-`createDataflowGraph` gets the database (from the given `CreateDataflowGraph` if defined in the [pipeline specification file](index.md#pipeline-specification-file)) or prints out the following INFO message to the logs and uses the current database instead.
+`createDataflowGraph` gets the database (from the given `CreateDataflowGraph` if defined in the [pipeline specification file](index.md#pipeline-specification-file)) or logs the following INFO message and uses the current database instead.
 
 ```text
 No default database was supplied. Falling back to the current database: [currentDatabase].
@@ -131,20 +138,20 @@ No default database was supplied. Falling back to the current database: [current
 
 In the end, `createDataflowGraph` [creates a dataflow graph](DataflowGraphRegistry.md#createDataflowGraph) (in the session's [DataflowGraphRegistry](DataflowGraphRegistry.md)).
 
-## Define SQL Datasets { #defineSqlGraphElements }
+## Define Pipeline Graph Elements from SQL Definitions { #defineSqlGraphElements }
 
 ```scala
 defineSqlGraphElements(
   cmd: proto.PipelineCommand.DefineSqlGraphElements,
-  session: SparkSession): Unit
+  sessionHolder: SessionHolder): Unit
 ```
 
 ??? note "DEFINE_SQL_GRAPH_ELEMENTS Pipeline Command"
     `defineSqlGraphElements` is used to handle [DEFINE_SQL_GRAPH_ELEMENTS](#DEFINE_SQL_GRAPH_ELEMENTS) pipeline command.
 
-`defineSqlGraphElements` [looks up the GraphRegistrationContext for the dataflow graph ID](DataflowGraphRegistry.md#getDataflowGraphOrThrow) (from the given `DefineSqlGraphElements` command and in the given `SessionHolder`).
+`defineSqlGraphElements` [looks up the GraphRegistrationContext](DataflowGraphRegistry.md#getDataflowGraphOrThrow) for the dataflow graph ID.
 
-`defineSqlGraphElements` creates a new [SqlGraphRegistrationContext](SqlGraphRegistrationContext.md) (for the `GraphRegistrationContext`) to [process the SQL definition file](SqlGraphRegistrationContext.md#processSqlFile).
+`defineSqlGraphElements` creates a new [SqlGraphRegistrationContext](SqlGraphRegistrationContext.md) (with the `GraphRegistrationContext`) to [process the SQL definition file](SqlGraphRegistrationContext.md#processSqlFile).
 
 ## Define Output { #defineOutput }
 

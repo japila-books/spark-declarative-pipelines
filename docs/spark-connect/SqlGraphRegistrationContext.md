@@ -15,7 +15,7 @@
 
 When [created](#creating-instance), `SqlGraphRegistrationContext` creates a [SqlGraphRegistrationContextState](SqlGraphRegistrationContextState.md) (with the [defaultCatalog](GraphRegistrationContext.md#defaultCatalog), the [defaultDatabase](GraphRegistrationContext.md#defaultDatabase) and the [defaultSqlConf](GraphRegistrationContext.md#defaultSqlConf)).
 
-## Process SQL File { #processSqlFile }
+## Process SQL Definition File { #processSqlFile }
 
 ```scala
 processSqlFile(
@@ -24,25 +24,21 @@ processSqlFile(
   spark: SparkSession): Unit
 ```
 
-`processSqlFile` creates a [SqlGraphRegistrationContext](SqlGraphRegistrationContext.md) for this [GraphRegistrationContext](#graphRegistrationContext).
-
-!!! warning
-    Why does `processSqlFile` creates a brand new [SqlGraphRegistrationContext](SqlGraphRegistrationContext.md) for the same [GraphRegistrationContext](#graphRegistrationContext) it is executed with?!
-
-`processSqlFile` [splits the contents of the SQL file into separate queries](#splitSqlFileIntoQueries) and [processes every SQL query](#processSqlQuery).
+`processSqlFile` [splits the given SQL text into separate SQL statements](#splitSqlFileIntoQueries) and [processes each](#processSqlQuery).
 
 ---
 
 `processSqlFile` is used when:
 
-* `PipelinesHandler` is requested to [defineSqlGraphElements](PipelinesHandler.md#defineSqlGraphElements)
+* `PipelinesHandler` is requested to [define pipeline graph elements from SQL definitions](PipelinesHandler.md#defineSqlGraphElements)
 
 ### Process Single SQL Query { #processSqlQuery }
 
 ```scala
 processSqlQuery(
   queryPlan: LogicalPlan,
-  queryOrigin: QueryOrigin): Unit
+  queryOrigin: QueryOrigin,
+  spark: SparkSession): Unit
 ```
 
 `processSqlQuery` handles (_processes_) the given [LogicalPlan](../logical-operators/LogicalPlan.md) logical commands:
@@ -53,11 +49,19 @@ processSqlQuery(
 | [CreateMaterializedViewAsSelect](../logical-operators/CreateMaterializedViewAsSelect.md) | [CreateMaterializedViewAsSelectHandler](#CreateMaterializedViewAsSelect) | [Table](GraphRegistrationContext.md#registerTable) ([isStreamingTable](Table.md#isStreamingTable) disabled)<br>[UnresolvedFlow](GraphRegistrationContext.md#registerFlow) ([once](UnresolvedFlow.md#once) disabled) |
 | [CreateStreamingTable](../logical-operators/CreateStreamingTable.md) | [CreateStreamingTableHandler](#CreateStreamingTable) | [Table](GraphRegistrationContext.md#registerTable) ([isStreamingTable](Table.md#isStreamingTable) enabled) |
 | [CreateStreamingTableAsSelect](../logical-operators/CreateStreamingTableAsSelect.md) | [CreateStreamingTableAsSelectHandler](#CreateStreamingTableAsSelect) | [Table](GraphRegistrationContext.md#registerTable) ([isStreamingTable](Table.md#isStreamingTable) enabled)<br>[UnresolvedFlow](GraphRegistrationContext.md#registerFlow) ([once](UnresolvedFlow.md#once) disabled) |
+| [CreateStreamingTableAutoCdc](../logical-operators/CreateStreamingTableAutoCdc.md) | [CreateStreamingTableAutoCdcHandler](#CreateStreamingTableAutoCdc) | |
 | [CreateView](../logical-operators/CreateView.md) | [CreatePersistedViewCommandHandler](#CreateView) | [PersistedView](GraphRegistrationContext.md#registerView)<br>[UnresolvedFlow](GraphRegistrationContext.md#registerFlow) ([once](UnresolvedFlow.md#once) disabled) |
 | [CreateViewCommand](../logical-operators/CreateViewCommand.md) | [CreateTemporaryViewHandler](#CreateViewCommand) | [TemporaryView](GraphRegistrationContext.md#registerView)<br>[UnresolvedFlow](GraphRegistrationContext.md#registerFlow) ([once](UnresolvedFlow.md#once) disabled) |
 | [SetCatalogCommand](../logical-operators/SetCatalogCommand.md) | [SetCatalogCommandHandler](#SetCatalogCommand) | |
 | [SetCommand](../logical-operators/SetCommand.md) | [SetCommandHandler](#SetCommand) | |
 | [SetNamespaceCommand](../logical-operators/SetNamespaceCommand.md) | [SetNamespaceCommandHandler](#SetNamespaceCommand) | |
+
+??? warning "SqlGraphElementRegistrationException for Unsupported Logical Commands"
+    `processSqlQuery` throws a `SqlGraphElementRegistrationException` exception for unsupported logical commands.
+
+    ```text
+    Unsupported plan [nodeName] parsed from SQL query
+    ```
 
 ### splitSqlFileIntoQueries { #splitSqlFileIntoQueries }
 

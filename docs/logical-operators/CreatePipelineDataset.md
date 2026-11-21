@@ -6,9 +6,10 @@ title: CreatePipelineDataset
 
 `CreatePipelineDataset` is an [extension](#contract) of the `Command` ([Spark SQL]({{ book.spark_sql }}/logical-operators/Command)) abstraction for [CREATE pipeline commands](#implementations) in Spark Declarative Pipelines framework:
 
-* `CREATE MATERIALIZED VIEW ... AS` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder/#visitCreatePipelineDataset))
+* `CREATE MATERIALIZED VIEW AS` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder/#visitCreatePipelineDataset))
 * `CREATE STREAMING TABLE` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder/#visitCreatePipelineDataset))
 * `CREATE STREAMING TABLE AS` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder/#visitCreatePipelineDataset))
+* `CREATE STREAMING TABLE FLOW AUTO CDC` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder/#visitCreatePipelineDataset))
 
 ## Contract (Subset)
 
@@ -22,3 +23,4 @@ name: LogicalPlan
 
 * [CreatePipelineDatasetAsSelect](CreatePipelineDatasetAsSelect.md)
 * [CreateStreamingTable](CreateStreamingTable.md)
+* [CreateStreamingTableAutoCdc](CreateStreamingTableAutoCdc.md)

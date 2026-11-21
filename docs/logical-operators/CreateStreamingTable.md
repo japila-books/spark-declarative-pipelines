@@ -4,7 +4,9 @@ title: CreateStreamingTable
 
 # CreateStreamingTable Unary Logical Command
 
-`CreateStreamingTable` is a `UnaryCommand` ([Spark SQL]({{ book.spark_sql }}/logical-operators/Command/#UnaryCommand)) and a [CreatePipelineDataset](CreatePipelineDataset.md) that represents `CREATE STREAMING TABLE` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder/#visitCreatePipelineDataset)) SQL statement (with no `AS` clause) in Spark Declarative Pipelines framework.
+`CreateStreamingTable` is a `UnaryCommand` ([Spark SQL]({{ book.spark_sql }}/logical-operators/Command/#UnaryCommand)) and [CreatePipelineDataset](CreatePipelineDataset.md) logical command.
+
+`CreateStreamingTable` represents `CREATE STREAMING TABLE` ([Spark SQL]({{ book.spark_sql }}/sql/SparkSqlAstBuilder/#visitCreatePipelineDataset)) SQL statement (with no `AS` clause) in Spark Declarative Pipelines framework.
 
 `CreateStreamingTable` is handled by [SqlGraphRegistrationContext](../SqlGraphRegistrationContext.md#CreateStreamingTable).
 

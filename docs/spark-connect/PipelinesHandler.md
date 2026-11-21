@@ -174,7 +174,7 @@ defineOutput(
 | `TEMPORARY_VIEW` | [Registers a view](GraphRegistrationContext.md#registerView) |
 | `SINK` | [Registers a sink](GraphRegistrationContext.md#registerSink) |
 
-??? warning "IllegalArgumentException"
+??? warning "IllegalArgumentException for Unknown Outputs"
     For unknown types, `defineOutput` reports an `IllegalArgumentException`:
 
     ```text

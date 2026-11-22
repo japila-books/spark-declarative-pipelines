@@ -1,6 +1,6 @@
 # DatasetManager
 
-`DatasetManager` is a global manager of [materialize datasets](#materializeDatasets) (tables and persistent views) right after a [pipeline update](PipelineExecution.md#startPipeline).
+`DatasetManager` is a global manager of [materialized datasets](#materializeDatasets) (tables and persistent views) right after a [pipeline update](PipelineExecution.md#startPipeline).
 
 ![DatasetManager](./images/DatasetManager.png)
 
@@ -21,7 +21,7 @@ materializeDatasets(
   context: PipelineUpdateContext): DataflowGraph
 ```
 
-`materializeDatasets` [finds the tables to be refreshed](#constructFullRefreshSet) among the [tables](DataflowGraph.md#tables) of the given resolved [DataflowGraph](DataflowGraph.md).
+`materializeDatasets` [finds the tables to be refreshed](#constructFullRefreshSet) among the [tables](DataflowGraph.md#tables) of the given resolved [DataflowGraph](./dataflow-graph/DataflowGraph.md).
 
 ??? warning "All the tables to be refreshed ignored"
     The first collection of tables to be refreshed is completely ignored from the [tables to be refreshed](#constructFullRefreshSet).
@@ -34,7 +34,7 @@ In the end, `materializeDatasets` [materializeViews](#materializeViews).
 
 `materializeDatasets` is used when:
 
-* `PipelineExecution` is requested to [initialize the dataflow graph](PipelineExecution.md#initializeGraph)
+* `PipelineExecution` is requested to [initialize the dataflow graph](./spark-connect/PipelineExecution.md#initializeGraph)
 
 ### Materialize Auxiliary Table { #materializeAuxiliaryTable }
 
@@ -160,3 +160,21 @@ Tables: [fullRefreshNotAllowed]
 `constructFullRefreshSet` is used when:
 
 * `DatasetManager` is requested to [materialize datasets](#materializeDatasets)
+
+## requireAutoCdcTargetSupportsRowLevelOps { #requireAutoCdcTargetSupportsRowLevelOps }
+
+```scala
+requireAutoCdcTargetSupportsRowLevelOps(
+  targetTable: Table,
+  targetTableCatalogEntity: V2Table): Unit
+```
+
+`requireAutoCdcTargetSupportsRowLevelOps` asserts that the given `Table` ([Spark SQL]({{ book.spark_sql }}/connector/Table/)) supports row-level mutations (and is a `SupportsRowLevelOperations` ([Spark SQL]({{ book.spark_sql }}/connector/SupportsRowLevelOperations/))).
+
+If not, `requireAutoCdcTargetSupportsRowLevelOps` throws an `AnalysisException` with `AUTOCDC_TARGET_DOES_NOT_SUPPORT_MERGE` error class.
+
+---
+
+`requireAutoCdcTargetSupportsRowLevelOps` is used when:
+
+* `DatasetManager` is requested to [materialize datasets](#materializeDatasets) (for [Auto CDC](./auto-cdc/index.md))

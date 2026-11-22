@@ -1,9 +1,38 @@
 # Auto CDC Flows
 
-[dp.create_auto_cdc_flow](../pyspark/index.md#create_auto_cdc_flow) is used in PySpark to create an Auto CDC flow into the target table from the Change Data Capture (CDC) source.
+[dp.create_auto_cdc_flow](../pyspark/index.md#create_auto_cdc_flow) or `CREATE FLOW AS AUTO CDC` creates an Auto CDC flow into a target streaming table from a Change Data Feed source.
 
-??? note "Target Streaming Table"
-    Target table must have already been created using the [dp.create_streaming_table](../pyspark/index.md#create_streaming_table) function.
+??? note "AutoCDC Target Streaming Table"
+    Target table should be created using the [dp.create_streaming_table](../pyspark/index.md#create_streaming_table) function.
+
+```py
+# Neither Delta Lake nor Iceberg work
+# Used as formats for demo purposes only
+
+from pyspark import pipelines as dp
+from pyspark.sql import DataFrame
+
+
+@dp.table
+def cdc_events() -> DataFrame:
+    return spark.readStream.format("delta").table("cdc_source")
+
+dp.create_streaming_table(
+    name="customers",
+    format="iceberg",
+)
+
+dp.create_auto_cdc_flow(
+    target="customers",
+    source="cdc_events",
+    keys=["id"],
+    sequence_by="event_ts",
+    apply_as_deletes="op = 'DELETE'",
+    except_column_list=["op", "event_ts"],
+    stored_as_scd_type=2,
+    track_history_column_list=["address"],
+)
+```
 
 Auto CDC flows are represented as [AutoCdcFlow](./AutoCdcFlow.md)s.
 
@@ -20,3 +49,9 @@ Auto CDC flows are represented as [AutoCdcFlow](./AutoCdcFlow.md)s.
 All the other variants fail at execution either with an `UnsupportedOperationException` or an `AnalysisException`.
 
 `Scd1MergeStreamingWrite` is executed as a streaming query with `foreachBatch` ([Spark Structured Streaming]({{ book.structured_streaming }}/DataStreamWriter/#foreachBatch)) streaming operator and [Trigger.AvailableNow](../spark-connect/TriggeredGraphExecution.md#streamTrigger).
+
+## SupportsRowLevelOperations
+
+Spark Declarative Pipelines [asserts](../DatasetManager.md#requireAutoCdcTargetSupportsRowLevelOps) that the AutoCDC target streaming table supports row-level data mutations that require rewriting data.
+
+Auto CDC flows (with MERGE writes) require a target table to use a Spark SQL connector with `SupportsRowLevelOperations` ([Spark SQL]({{ book.spark_sql }}/connector/SupportsRowLevelOperations/)) support.

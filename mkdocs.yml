@@ -16,7 +16,7 @@ theme:
     logo: material/book-open-page-variant
     repo: material/github
   features:
-    # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#adding-annotations
+    # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-annotations
     - content.code.annotate
     # https://squidfunk.github.io/mkdocs-material/upgrade/#contentcodecopy
     - content.code.copy
@@ -111,6 +111,8 @@ extra:
     spark_sql: https://books.japila.pl/spark-sql-internals
     structured_streaming: https://books.japila.pl/spark-structured-streaming-internals
     unity_catalog: https://books.japila.pl/unity-catalog-internals
+  delta_lake:
+    version: 4.4.1
   scala:
     # https://github.com/apache/spark/blob/v4.3.0/pom.xml#L177
     version: 2.13.18

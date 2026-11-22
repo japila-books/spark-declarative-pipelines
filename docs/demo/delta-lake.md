@@ -81,7 +81,7 @@ Execute the following command:
 
 ```shell
 ./sbin/start-connect-server.sh \
-  --packages io.delta:delta-spark_4.1_2.13:4.1.0,org.slf4j:slf4j-api:2.0.17 \
+  --packages io.delta:delta-spark_2.13:{{ delta_lake.version }},org.slf4j:slf4j-api:2.0.20 \
   --conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension \
   --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog
 ```

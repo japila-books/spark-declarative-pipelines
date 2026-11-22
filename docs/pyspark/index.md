@@ -63,8 +63,12 @@ create_auto_cdc_flow(
     apply_as_deletes: Optional[Union[str, Column]] = None,
     column_list: Optional[Union[List[str], List[Column]]] = None,
     except_column_list: Optional[Union[List[str], List[Column]]] = None,
-    stored_as_scd_type: Optional[Literal[1, "1"]] = None,
+    stored_as_scd_type: Optional[Literal[1, 2, "1", "2"]] = None,
     name: Optional[str] = None,
+    *,
+    track_history_column_list: Optional[Union[List[str], List[Column]]] = None,
+    track_history_except_column_list: Optional[Union[List[str], List[Column]]] = None,
+    spark_conf: Optional[Dict[str, str]] = None,
 ) -> None
 ```
 
